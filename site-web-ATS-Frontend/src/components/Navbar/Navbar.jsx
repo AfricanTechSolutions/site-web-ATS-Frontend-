@@ -10,9 +10,9 @@ const Menu = [
 
 const Navbar = () => {
   return (
-    <div className='bg-white shadow-md'>
+    <div className='bg-white shadow-md w-full'>
         {/* Upper section */}
-        <div className='mx-0 mt-0 px-5 py-3 bg-blue-200'>
+        <div className='mx-0 mt-0 px-5 pt-2 pb-0 bg-blue-200'>
           <div className='flex justify-between
                flex-wrap '>
             <div className=' '>
@@ -37,7 +37,7 @@ const Navbar = () => {
         </div>
         {/* Lower section */}
         <div>
-        <div className='flex justify-around flex-wrap'>
+        <div className='flex justify-around flex-wrap p-1'>
            <div className='relative group hover:text-blue-900'>
               <input type="text" placeholder=' Search...' 
                   className='min-w-[150px] w-full border rounded-xl px-1 bg-white
@@ -47,7 +47,7 @@ const Navbar = () => {
               /> <IoMdSearch className='absolute top-1/2 -translate-y-1/2 right-3'
               />
             </div>
-            <div className='flex gap-4 sm:gap-6 mb-1'>
+            <div className='flex gap-4 sm:gap-6 mb-1 flex-wrap'>
               <button type='submit' 
                 className='bg-blue-600 text-white
                                       font-semibold py-1 px-2 rounded-full mt-2 mb-1
