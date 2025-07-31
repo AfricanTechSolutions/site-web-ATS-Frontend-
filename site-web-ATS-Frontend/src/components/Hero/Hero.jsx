@@ -90,7 +90,7 @@ const Hero = () => {
                     <div className='order-1 sm:order-2
                                     relative z-10'>
                         <div>
-                            <img src={data.img} alt="women"
+                            <img src={data.img} alt={data.title}
                                className='h-[300px] w-[300px] 
                                           sm:h-[450px] sm:w-[450px]
                                           sm:scale-125 object-contain 
