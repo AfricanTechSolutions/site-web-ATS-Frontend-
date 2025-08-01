@@ -13,12 +13,12 @@ const CustomerList =[
     {id: '',
      img: image2 ,
      author: "Alicia Grace" ,
-      text: "Je suis completement satisfaite des mes serveurs et desktops acheter a ATS" ,     
+      text: " Je suis entièrement satisfaite des serveurs et ordinateurs de bureau achetés chez ATS : performance, fiabilité et service irréprochable." ,     
     },
     {id: '',
      img: image3 ,
      author: "Anonimous"  ,
-      text: "Tres bonne entreprise IT" ,   
+      text: " ATS, une entreprise IT d'excellence !" ,   
     },
 ]
 
@@ -69,7 +69,7 @@ const Customers = () => {
       >
         <p className="text-sm text-primary">Ce que nos clients dissent</p>
         <h1 data-aos="fade-up" className="text-3xl font-bold">
-          Revues des clints
+          Revues des clients
         </h1>
       </div>
       {/* Card Section */}
@@ -80,8 +80,8 @@ const Customers = () => {
               <div
                 key={data.id}
                 className="flex flex-col gap-4 
-                           shadow-lg py-8 px-6 mx-4 rounded-xl
-                           bg-blue-300 relative h-[300px]"
+                           shadow-lg py-8 px-6 mx-2 rounded-xl
+                           bg-blue-300 relative h-[250px]"
               >
                 <div>
                   
@@ -89,13 +89,13 @@ const Customers = () => {
                   <img
                     src={data.img}
                     alt={data.author}
-                    className="h-20 w-20 rounded-full mb-4"
+                    className="h-20 w-20 rounded-full mb-1"
                   />
                 </div>
-                <div className="flex flex-col items-center gap-4">
+                <div className="flex flex-col items-center gap-4 flex-wrap">
                   {/* The text section */}
                   <div className="space-y-3">
-                    <p className="text-xl text-black">{data.text}</p>
+                    <p className="text-xl text-black sm:text-[1rem] ">{data.text}</p>
                     <h1 className="text-xl font-bold text-black/80">
                       {data.author}
                     </h1>

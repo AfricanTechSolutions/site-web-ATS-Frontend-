@@ -1,6 +1,6 @@
 import React from 'react'
 import img1 from '../../assets/desktops.avif'
-import img2 from '../../assets/softwares.png'
+import img2 from '../../assets/softwares.jpg'
 import img3 from '../../assets/servers.avif'
 import img4 from '../../assets/laptop.avif'
 import img5 from '../../assets/monitor.avif'
@@ -67,7 +67,7 @@ const Services = () => {
                         <div className='pl-3'>
                            <h3 className='text-xl font-semibold'
                            > {data.title}</h3>
-                           <p className='mt-4'>
+                           <p className='mt-4  '>
                             {data.description}
                            </p>
                         </div>

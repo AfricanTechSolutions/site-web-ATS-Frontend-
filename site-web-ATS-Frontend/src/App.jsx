@@ -6,6 +6,7 @@ import 'aos/dist/aos.css'
 import Services from './components/Services/Services'
 import Customers from './components/Customers/Customers'
 import Footer from './components/Footer/Footer'
+import MesRoutes from './MesRoutes'
 
 const App = () => {
  React.useEffect(() => {
@@ -20,11 +21,8 @@ const App = () => {
 
   return (
     <div>
-      <Navbar/>
-      <Hero/>
-      <Services/>
-      <Customers/>
-      <Footer/>
+      <MesRoutes/>
+
     </div>
   )
 }
