@@ -15,7 +15,7 @@ const MesRoutes = () => {
     <Routes>
     <Route path='/' element={<Hero />}/>
     <Route path='/*' element={ <h1 className='text-9xl'>Page Not found</h1> }/>
-    <Route path='/login' element={<Login/>} />
+    <Route path='/login' element={<Login/>} /> 
     <Route path='/register' element={<Register/>} />
       {/* <Navbar/>
       <Hero/>
