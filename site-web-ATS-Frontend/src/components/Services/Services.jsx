@@ -1,6 +1,6 @@
 import React from 'react'
 import img1 from '../../assets/desktops.avif'
-import img2 from '../../assets/softwares.jpg'
+import img2 from '../../assets/softwares.png'
 import img3 from '../../assets/servers.avif'
 import img4 from '../../assets/laptop.avif'
 import img5 from '../../assets/monitor.avif'
@@ -48,10 +48,9 @@ const Services = () => {
             </div>
         </div>
         {/* Cards */}
-        <div className='grid grid-cols-1 sm:grid-cols-3 
-                                md:grid-cols-3 lg:grid-cols-5 
+        <div className='grid grid-cols-1 sm:grid-cols-3  lg:grid-cols-5 
                                 place-items-center gap-5
-                                sm: p-1'>
+                                sm:p-1 '>
             {
                 ProductsList.map((data) => (
                     <div key={data.id}
@@ -59,15 +58,16 @@ const Services = () => {
                                    pb-1 max-w-[400px] 
                                    hover:scale-105 duration-200'
                     >
-                        
+                     <div className='h-[200px] w-[220px] flex items-center'>   
                         <img src={data.img} alt={data.title} 
-                            className='h-[200px] w-[220px] 
+                            className=' 
                                         object-cover mb-4'
                         />
+                        </div>
                         <div className='pl-3'>
-                           <h3 className='text-xl font-semibold'
+                           <h3 className='text-xl font-semibold text-gray-800'
                            > {data.title}</h3>
-                           <p className='mt-4  '>
+                           <p className='mt-4  text-gray-700'>
                             {data.description}
                            </p>
                         </div>
@@ -75,6 +75,10 @@ const Services = () => {
                 ))
             }
         </div>
+        <div className='flex justify-center mt-4 '>
+                <a href="/services" className=' rounded-full py-2 px-5 text-3xl text-white text-center bg-gradient-to-br from-blue-600 to-cyan-600 hover:scale-105 transition-all duration-200'
+                >Tous les produits/services</a>
+            </div>
     </div>
   )
 }

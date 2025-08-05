@@ -1,6 +1,6 @@
 import React from 'react'
 import Slider from 'react-slick'
-import image1 from '../../assets/softwares.jpg'
+import image1 from '../../assets/softwares.png'
 import image2 from '../../assets/coder.png'
 import image3 from '../../assets/laptop.avif'
 import Services from '../Services/Services'
@@ -10,7 +10,7 @@ const ImageList = [
   {
     id: 1,
     img: image1,
-    title: " Nous développons des logiciels pour vous.",
+    title: "Nous développons des logiciels pour vous.",
     description:
       ""
   },
@@ -65,11 +65,11 @@ const Hero = () => {
                   <div className='grid grid-cols-1 sm:grid-cols-2 '>
                       {/* Text content section */}
                       <div className='flex flex-col justify-center gap-4 pt-12 sm:p-0 text-center sm:text-left
-                      order-2 sm:order-1 relative z-10'>
+                      order-2 sm:order-1 relative z-10 '>
                           <h1 data-aos="zoom-out"
                           data-duration="500"
                           data-aos-once="true"
-                          className='text-5xl sm:text-6xl
+                          className='text-5xl sm:text-6xl text-gray-800 
                                         lg:text-7xl font-bold'>{data.title}</h1>
                           <p data-aos="fade-up"
                             data-duration="500"
@@ -89,13 +89,13 @@ const Hero = () => {
                       </div>
                       {/* Image section */}
                       <div className='order-1 sm:order-2
-                                      relative z-10'>
+                                      relative '>
                           <div>
                               <img src={data.img} alt={data.title}
                                 className='h-[300px] w-[300px] 
                                             sm:h-[450px] sm:w-[450px]
                                             sm:scale-125 object-contain 
-                                            mx-auto lg:scale-120' />
+                                            mx-auto lg:scale-120 z-10' />
                           </div>
                       </div>
                   </div>

@@ -15,9 +15,9 @@ const Login = () => {
     <div className='h-full w-full flex justify-center'>
       <div className='md:m-10 p-5 shadow-xl sm:m-10 m-6 bg-white lg:m-[50px] relative z-0 
                      outline outline-blue-400
-                      sm:w-max object-cover '>
+                      w-max '>
         {/* Background design */}
-        <div className='bg-blue-400 w-50 h-50 absolute z-1 rounded-3xl top-1/14 md:top-1/20'>
+       <div className='bg-blue-400 w-50 h-50 absolute z-1 rounded-3xl top-1/14 md:top-1/20'>
         </div>
 
         {/* Header section */}
@@ -27,7 +27,7 @@ const Login = () => {
           <p className='font-light text-gray-500'>Restez ajour et beneficiez des reduction en vous enregistrant</p>
         </div>
         {/* Body section */}
-        <div className='flex gap-10 sm:gap-4 flex-wrap lg:flex-row sm:flex-col relative z-10 ml-12'>
+         <div className='flex sm:gap-10 gap-4 flex-wrap sm:flex-row flex-col relative z-10 justify-center'>
           {/* Signin with email */}
           <div className='shadow-xl m-8 md:w-[400px] w-[300px] bg-white rounded-md sm:mr-4 py-2'>
             <form  method='POST' className='flex flex-col items-center gap-5 '>
