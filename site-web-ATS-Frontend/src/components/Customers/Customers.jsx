@@ -68,8 +68,8 @@ const Customers = () => {
                             max-w-[600px] mx-auto"
       >
         <p className="text-sm text-primary">Ce que nos clients dissent</p>
-        <h1 data-aos="fade-up" className="text-3xl font-bold">
-          Revues des clients
+        <h1 data-aos="fade-up" className="text-3xl font-bold mt-2">
+          Temoignages
         </h1>
       </div>
       {/* Card Section */}

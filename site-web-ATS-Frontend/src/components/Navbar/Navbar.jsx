@@ -7,7 +7,8 @@ const Menu = [
   {id: '1', name: 'Accueil', link: '/'},
   {id: '2', name: 'Nos services', link: '/services'},
   {id: '3', name: 'Realisations', link: '#'},
-  {id: '4', name: 'A propos', link: '#'},
+  {id: '4', name: 'A propos', link: '/about-us'},
+  {id: '4', name: 'Nous contacter', link: '/contact'},
 ]
 
 const Navbar = () => {
@@ -31,7 +32,7 @@ const [isOpen,setIsOpen] = useState(false);
                 {
                   Menu.map((data) => (
                     <li key={data.id}
-                    className='text-black hover:text-blue-500 font-semibold text-xl'>
+                    className='text-gray-800 hover:text-blue-500 font-semibold font-serif text-xl'>
                         <a href={data.link}>{data.name}</a>
                     </li>
                   )

@@ -81,9 +81,9 @@ const Hero = () => {
                             data-duration="500"
                             data-aos-delay="300"
                           >
-                              <button className='bg-gradient-to-r from-blue-600 to-white
-                                                  hover:scale-105 duration-200 text-black
-                                                  px-4 py-2 rounded-full shadow-md'
+                              <button className='bg-gradient-to-r from-blue-700 to-blue-300
+                                                  hover:scale-105 duration-200
+                                                  px-4 py-2 rounded-full shadow-md text-white'
                               >En savoir plus</button>
                           </div>
                       </div>
@@ -109,6 +109,15 @@ const Hero = () => {
       </div>    
       <Services/>
       <Customers/>
+            <div className='flex backdrop-blur-md flex-col gap-12 justify-center items-center p-10 md:p-30 bg-gradient-to-br from-blue-700 to-blue-300 mx-0 mb-15 w-screen h-[200px] mt-25'>
+        <h1 className=' text-white text-2xl font-bold font-serif'>
+          Vous avez des preoccupations ou souhaitez nous rencontrer?
+        </h1 >
+        <p>
+          <a className='px-4 py-2 bg-white rounded-full text-[1.5rem] text-gray-700 font-semibold hover:bg-blue-500 hover:text-white hover:outline duration-200 shadow-md'
+          href="/contact">Nous contacter</a>
+        </p>
+      </div>
     </>
 
   )

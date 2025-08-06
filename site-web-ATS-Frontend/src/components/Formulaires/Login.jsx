@@ -1,74 +1,83 @@
 import React from 'react'
-import { FaApple, FaGoogle } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
-
+import { FaApple, FaGoogle } from 'react-icons/fa'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
   const navigate = useNavigate();
 
   return (
-    <div className='h-full w-full flex justify-center'>
-      <div className='md:m-10 p-5 shadow-xl sm:m-10 m-6 bg-white lg:m-[50px] relative z-0 
-                     outline outline-blue-400
-                      w-max '>
+    <div className="min-h-screen flex justify-center items-center bg-gray-100 p-4">
+      <div className="relative z-0 w-full max-w-6xl bg-white shadow-xl rounded-lg p-6 sm:p-10">
+        
         {/* Background design */}
-        <div className='bg-blue-400 w-50 h-50 absolute z-1 rounded-3xl top-1/14 md:top-1/20'>
+        <div className="bg-blue-400 w-32 h-32 absolute z-0 rounded-3xl top-[-40px] left-[-40px]"></div>
+
+        {/* Header */}
+        <div className="text-center relative z-10 mb-10">
+          <h1 className="text-3xl font-bold">Se Connecter</h1>
+          <p className="text-gray-500">Entrez vos informations pour vous connecter à votre compte</p>
         </div>
 
-        {/* Header section */}
-        <div className='text-center flex flex-col relative gap-1 z-10 w-full'>
-        <h1 className='text-3xl font-bold'>
-          Se Connecter</h1>
-          <p className='font-light text-gray-500'>Enterz vos informations pour vous connecter a votre compte</p>
-        </div>
-        {/* Body section */}
-        <div className='flex sm:gap-10 gap-4 flex-wrap sm:flex-row flex-col relative z-10 justify-center'>
-          {/* login with email */}
-          <div className='shadow-xl m-10 md:w-[400px] w-3/4 bg-white rounded-md sm:m-4 py-8 sm:pb-4'>
-            <form  method='POST' className='flex flex-col items-center gap-5 '>
-               <div className='flex flex-col'>
-                <label htmlFor="Email">Email</label>
-                <input type="email" id='Email' placeholder="Entrez votre addresse email" 
-                  className='md:w-[300px] sm:w-max border border-blue-400 h-10 rounded-md p-2 focus:outline-blue-500' />
+        {/* Body */}
+        <div className="flex flex-col lg:flex-row justify-center items-stretch gap-6 relative z-10">
+          
+          {/* Email login form */}
+          <div className="w-full max-w-md bg-white rounded-md shadow-2xl p-6">
+            <form className="flex flex-col gap-6">
+              <div className="flex flex-col">
+                <label htmlFor="email" className="mb-1 font-medium">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="Entrez votre adresse email"
+                  className="w-full border border-blue-400 h-10 rounded-md px-3 focus:outline-blue-500"
+                />
               </div>
-              <div className='flex flex-col'>
-                <label htmlFor="password">Mot de passe</label>
-                <input type="password" id='password' placeholder="Entrez le mot de passe" 
-                  className='md:w-[300px] sm:w-max border border-blue-400 h-10 rounded-md p-2 focus:outline-blue-500' />
+              <div className="flex flex-col">
+                <label htmlFor="password" className="mb-1 font-medium">Mot de passe</label>
+                <input
+                  type="password"
+                  id="password"
+                  placeholder="Entrez le mot de passe"
+                  className="w-full border border-blue-400 h-10 rounded-md px-3 focus:outline-blue-500"
+                />
               </div>
-            <button type='submit' disabled
-              className='bg-blue-500 text-white font-semibold py-2 px-6 self-end rounded-full mt-5 mr-14 hover:bg-blue-700 hover:scale-105 duration-200 hover:cursor-pointer'
-              >Se connecter</button>
+              <button
+                type="submit"
+                disabled
+                className="bg-blue-500 text-white font-semibold py-2 px-6 rounded-full mt-4 self-end hover:bg-blue-700 hover:scale-105 duration-200"
+              >
+                Se connecter
+              </button>
             </form>
           </div>
-          {/* Login with Google/Apple */}
-          <div className='shadow-xl md:m-8 m-4 md:w-[400px] w-3/4  bg-white rounded-md sm:mr-4 flex flex-col items-center p-4 gap-8'>
-            <div className='text-center'>
-            <h1 className='text-2xl mb-4'>ou </h1>
-            <h1 className='font-light'>Se connecter avec</h1>
+
+          {/* Login with Google / Apple */}
+          <div className="w-full max-w-md bg-white rounded-md shadow-2xl p-6 flex flex-col items-center gap-6">
+            <div className="text-center">
+              <h2 className="text-xl mb-2">Ou</h2>
+              <p className="text-gray-500">Se connecter avec</p>
             </div>
-            <div className='flex gap-4'>
-              <button className='bg-blue-600 text-white flex gap-4 px-6 py-2 rounded-md w-max md:w-[150px] hover:bg-blue-700 hover:cursor-pointer duration-200'>
-                  <FaGoogle className='text-2xl'
-                  />
-                   <p className='font-extralight text-[14px] '
-                  >Google</p>
+            <div className="flex gap-4 flex-wrap justify-center">
+              <button className="bg-blue-600 text-white flex items-center gap-2 px-6 py-2 rounded-md hover:bg-blue-700 transition">
+                <FaGoogle className="text-2xl" />
+                <span className="text-sm font-light">Google</span>
               </button>
-              <button className='bg-blue-600 text-white flex gap-4 px-6 py-2 rounded-md w-max md:w-[150px] hover:bg-blue-700 hover:cursor-pointer duration-200'>
-                  <FaApple className='text-2xl'
-                  />
-                   <p className='font-extralight text-[14px] '
-                  >Apple</p>
+              <button className="bg-blue-600 text-white flex items-center gap-2 px-6 py-2 rounded-md hover:bg-blue-700 hover:outline">
+                <FaApple className="text-2xl" />
+                <span className="text-sm font-light">Apple</span>
               </button>
             </div>
-            <div className='text-center'>
-            <h1>Vous avez pas encore un compte? </h1>
-            <button onClick={() => {navigate('/register')}}
-            className='border  m-10 bg-white text-blue-500 font-semibold py-1.5 px-10 rounded-full hover:bg-blue-500 hover:text-white hover:scale-105 duration-200 hover:cursor-pointer'
-            >Creer un compte</button>
+            <div className="text-center mt-4">
+              <p className="mb-4">Vous n'avez pas encore de compte ?</p>
+              <button
+                onClick={() => navigate('/register')}
+                className="border border-blue-500 text-blue-500 py-2 px-6 rounded-full hover:bg-blue-500 hover:text-white hover:scale-105 transition"
+              >
+                Créer un compte
+              </button>
             </div>
           </div>
-
         </div>
       </div>
     </div>
