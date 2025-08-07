@@ -6,8 +6,8 @@ import { useNavigate } from 'react-router-dom';
 const Menu = [
   {id: '1', name: 'Accueil', link: '/'},
   {id: '2', name: 'Nos services', link: '/services'},
-  {id: '3', name: 'Realisations', link: '#'},
-  {id: '4', name: 'A propos', link: '/about-us'},
+  //{id: '3', name: 'Realisations', link: '#'},
+  {id: '3', name: 'A propos', link: '/about-us'},
   {id: '4', name: 'Nous contacter', link: '/contact'},
 ]
 

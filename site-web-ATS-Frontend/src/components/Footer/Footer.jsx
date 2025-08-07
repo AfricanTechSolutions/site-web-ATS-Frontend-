@@ -92,7 +92,7 @@ const Footer = () => {
 
       {/* Copyright */}
       <div className="text-center text-sm text-gray-600 py-4">
-        &copy; {new Date().getFullYear()} Tsona Belvic Tous droits réservés. belvictsona@gmail.com
+        &copy; {new Date().getFullYear()} ATS Tous droits réservés. 
       </div>
     </footer>
   );

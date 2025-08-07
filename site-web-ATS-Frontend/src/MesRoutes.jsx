@@ -9,6 +9,8 @@ import Register from './components/Formulaires/Register';
 import AllServices from './components/Services/AllServices';
 import About from './components/About/About';
 import Contact from './components/Formulaires/Contact';
+import ApplicationForm from './components/Dashboards/applicationForm';
+import UserPage from './components/Dashboards/UserPage';
 
 const MesRoutes = () => {
   return (
@@ -23,6 +25,8 @@ const MesRoutes = () => {
     <Route path='/services' element={<AllServices />} />
     <Route path='/about-us' element={<About />} />
     <Route path='/contact' element={<Contact />} />
+    <Route path='/application-form' element={<ApplicationForm />} />
+    <Route path='/user-page' element={<UserPage />} />
       {/* <Navbar/>
       <Hero/>
       <Services/>
