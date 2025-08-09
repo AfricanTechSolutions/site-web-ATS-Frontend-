@@ -11,6 +11,7 @@ import About from './components/About/About';
 import Contact from './components/Formulaires/Contact';
 import ApplicationForm from './components/Dashboards/applicationForm';
 import UserPage from './components/Dashboards/UserPage';
+import Dashboard from './components/Dashboards/Dashboard';
 
 const MesRoutes = () => {
   return (
@@ -27,6 +28,7 @@ const MesRoutes = () => {
     <Route path='/contact' element={<Contact />} />
     <Route path='/application-form' element={<ApplicationForm />} />
     <Route path='/user-page' element={<UserPage />} />
+    <Route path='/admin' element={<Dashboard />} />
       {/* <Navbar/>
       <Hero/>
       <Services/>
