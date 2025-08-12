@@ -12,6 +12,7 @@ import Contact from './components/Formulaires/Contact';
 import ApplicationForm from './components/Dashboards/applicationForm';
 import UserPage from './components/Dashboards/UserPage';
 import Dashboard from './components/Dashboards/Dashboard';
+import Realisations from './components/Realisations/Realisations';
 
 const MesRoutes = () => {
   return (
@@ -29,6 +30,7 @@ const MesRoutes = () => {
     <Route path='/application-form' element={<ApplicationForm />} />
     <Route path='/user-page' element={<UserPage />} />
     <Route path='/admin' element={<Dashboard />} />
+    <Route path='/realisations' element={<Realisations />} />
       {/* <Navbar/>
       <Hero/>
       <Services/>

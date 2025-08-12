@@ -84,7 +84,7 @@ const Dashboard = () => {
       </div>
       <table className="w-full text-sm sm:text-base">
         <thead>
-          <tr className="bg-gray-200 text-gray-700">
+          <tr className="bg-blue-500 text-gray-200">
             <th className="p-2 text-left">Titre</th>
             <th className="p-2 text-left">Auteur</th>
             <th className="p-2 text-center">Actions</th>
@@ -92,7 +92,7 @@ const Dashboard = () => {
         </thead>
         <tbody>
           {articles.map((art) => (
-            <tr key={art.id} className="hover:bg-gray-100 transition-colors">
+            <tr key={art.id} className="odd:bg-white even:bg-blue-100 hover:bg-gray-100 transition-colors">
               <td className="p-2">{art.title}</td>
               <td className="p-2">{art.author}</td>
               <td className="p-2 text-center">
@@ -124,7 +124,7 @@ const Dashboard = () => {
       </div>
       <table className="w-full text-sm sm:text-base">
         <thead>
-          <tr className="bg-gray-200 text-gray-700">
+          <tr className="bg-blue-500 text-gray-200">
             <th className="p-2 text-left">Nom</th>
             <th className="p-2 text-left">Description</th>
             <th className="p-2 text-center">Actions</th>
@@ -132,7 +132,7 @@ const Dashboard = () => {
         </thead>
         <tbody>
           {services.map((srv) => (
-            <tr key={srv.id} className="hover:bg-gray-100 transition-colors">
+            <tr key={srv.id} className="odd:bg-white even:bg-blue-100 hover:bg-gray-100 transition-colors">
               <td className="p-2">{srv.name}</td>
               <td className="p-2">{srv.description}</td>
               <td className="p-2 text-center">
@@ -164,7 +164,7 @@ const Dashboard = () => {
       </div>
       <table className="w-full text-sm sm:text-base">
         <thead>
-          <tr className="bg-gray-200 text-gray-700">
+          <tr className="bg-blue-500 text-gray-200">
             <th className="p-2 text-left">Projet</th>
             <th className="p-2 text-left">Client</th>
             <th className="p-2 text-center">Actions</th>
@@ -172,7 +172,7 @@ const Dashboard = () => {
         </thead>
         <tbody>
           {portfolio.map((p) => (
-            <tr key={p.id} className="hover:bg-gray-100 transition-colors">
+            <tr key={p.id} className="odd:bg-white even:bg-blue-100 hover:bg-gray-100 transition-colors">
               <td className="p-2">{p.project}</td>
               <td className="p-2">{p.client}</td>
               <td className="p-2 text-center">
@@ -324,7 +324,7 @@ const Dashboard = () => {
             <div className="overflow-x-auto">
               <table className="w-full min-w-[350px] sm:min-w-[500px] text-sm sm:text-base">
                 <thead>
-                  <tr className="text-gray-50 bg-gray-500">
+                  <tr className="bg-blue-500 text-gray-100">
                     <th className="px-4 py-3 text-left font-semibold">Nom</th>
                     <th className="px-4 py-3 text-left font-semibold">Email</th>
                     <th className="px-4 py-3 text-left font-semibold">Statut</th>
@@ -335,18 +335,18 @@ const Dashboard = () => {
                   {usersList.map((user) => (
                     <tr
                       key={user.id}
-                      className="hover:bg-gray-100 transition-colors duration-200"
+                      className="odd:bg-white even:bg-blue-100 hover:bg-gray-100 transition-colors duration-200"
                     >
-                      <td className="px-4 py-3 font-medium text-gray-800">{user.name}</td>
-                      <td className="px-4 py-3 text-gray-600">{user.email}</td>
+                      <td className="px-1 sm:px-4 py-3 font-medium text-gray-800">{user.name}</td>
+                      <td className="px-1 sm:px-4 py-3 text-gray-600">{user.email}</td>
                       <td
-                        className={`px-4 py-3 font-semibold ${
+                        className={`px-1 sm:px-4 py-3 font-semibold ${
                           user.status === "Actif" ? "text-green-600" : "text-red-600"
                         }`}
                       >
                         {user.status}
                       </td>
-                      <td className="px-4 py-3 text-center flex justify-center gap-3">
+                      <td className="px-1 sm:px-4 py-3 text-center flex justify-center gap-3">
                         <button className="p-2 rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 transition">
                           <FaEdit />
                         </button>

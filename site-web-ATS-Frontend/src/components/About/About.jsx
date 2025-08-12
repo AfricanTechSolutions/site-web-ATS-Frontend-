@@ -23,8 +23,8 @@ const About = () => {
           <h1 className='text-4xl text-white font-bold drop-shadow-lg'>
             À propos de African Technologies Solution (ATS)
           </h1>
-          <p className='text-xl text-gray-200 max-w-3xl'>
-            Une entreprise spécialisée dans la fourniture de solutions numériques pour les PME et les grandes entreprises
+          <p className='text-xl text-gray-100 max-w-3xl'>
+            Une entreprise innovante spécialisée dans la fourniture de solutions numériques pour les PME et les grandes entreprises
           </p>
         </div>
       </div>

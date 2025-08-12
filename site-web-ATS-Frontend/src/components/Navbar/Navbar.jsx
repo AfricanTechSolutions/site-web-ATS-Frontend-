@@ -6,9 +6,9 @@ import { useNavigate } from 'react-router-dom';
 const Menu = [
   {id: '1', name: 'Accueil', link: '/'},
   {id: '2', name: 'Nos services', link: '/services'},
-  //{id: '3', name: 'Realisations', link: '#'},
-  {id: '3', name: 'A propos', link: '/about-us'},
-  {id: '4', name: 'Nous contacter', link: '/contact'},
+  {id: '3', name: 'Realisations', link: '/realisations'},
+  {id: '4', name: 'A propos', link: '/about-us'},
+  {id: '5', name: 'Nous contacter', link: '/contact'},
 ]
 
 const Navbar = () => {
@@ -27,7 +27,7 @@ const [isOpen,setIsOpen] = useState(false);
                 <img src={logo} alt="Logo"
                               className='w-[40px] h-[30px] object-cover' /></a>
             </div>
-            <div className='md:mr-[300px]'>
+            <div className='md:mr-[100px]'>
               <ul className='flex sm:gap-8 gap-4'>
                 {
                   Menu.map((data) => (
