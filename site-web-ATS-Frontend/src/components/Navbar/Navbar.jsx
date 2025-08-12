@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import logo from '../../assets/logo.png'
+import logo from '../../assets/logo_ats2.png'
 import {IoMdClose, IoMdMenu, IoMdSearch} from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
 
@@ -25,9 +25,9 @@ const [isOpen,setIsOpen] = useState(false);
             <div className=' '>
                 <a href="/" className='flex gap-1 text-lg font-semibold'><p>ATS</p>
                 <img src={logo} alt="Logo"
-                              className='w-[40px] h-[30px]' /></a>
+                              className='w-[40px] h-[30px] object-cover' /></a>
             </div>
-            <div className='md:mr-[300px] '>
+            <div className='md:mr-[300px]'>
               <ul className='flex sm:gap-8 gap-4'>
                 {
                   Menu.map((data) => (

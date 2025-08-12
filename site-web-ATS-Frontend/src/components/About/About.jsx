@@ -15,9 +15,9 @@ const About = () => {
       {/* Banner with blurred background */}
       <div className='relative w-full h-96 overflow-hidden'>
         <div
-          className='absolute inset-0 bg-cover bg-center '
-          style={{ backgroundImage: `url(${img1})` }}
-        > <div className='bg-black w-full h-full opacity-50 '></div>
+          className='absolute inset-0 bg-cover bg-center h-full'
+          style={{ backgroundImage: `url(${img1})`, backgroundPosition: 'center', backgroundSize: 'cover' }}
+        > <div className='bg-black w-full h-full opacity-40 '></div>
         </div>
         <div className='relative z-10 flex flex-col gap-4 items-center justify-center h-full px-6 text-center'>
           <h1 className='text-4xl text-white font-bold drop-shadow-lg'>
