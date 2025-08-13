@@ -67,6 +67,24 @@ export default function Realisations() {
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-800">
+      {/* Banner */}
+      <div className="relative w-full h-96 overflow-hidden">
+              <div
+                className="absolute inset-0 bg-cover bg-center h-full"
+                style={{
+                  backgroundImage: `url(${img4})`,
+                  backgroundPosition: 'center',
+                  backgroundSize: 'cover',
+                }}
+              >
+                <div className="bg-black w-full h-full opacity-40"></div>
+              </div>
+              <div className="relative z-10 flex flex-col gap-4 items-center justify-center h-full px-6 text-center">
+                <h1 className="text-4xl text-white font-bold drop-shadow-lg">Nos realisations</h1>
+                <p className="text-xl text-gray-100 max-w-3xl">ATS a deja ue a completer plusieurs projets pour des PME et des grande entreprises</p>
+              </div>
+            </div>
+
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         {/* Projects grid */}
         <section aria-labelledby="projects-heading">
@@ -92,26 +110,26 @@ export default function Realisations() {
                   <h3 className="text-lg font-semibold mb-2">{p.title}</h3>
                   <p className="text-gray-600 text-sm mb-4 flex-1">{p.description}</p>
 
-                  <div className="flex items-center justify-between mt-4">
+                  <div className="flex items-center justify-center mt-4">
                     <div className="flex flex-wrap gap-2">
                       {p.tags.map((t) => (
                         <span
                           key={t}
-                          className="text-xs bg-gray-100 px-2 py-1 rounded-md text-gray-700"
+                          className="text-xs text-center  bg-gray-100 px-2 py-1 rounded-md text-gray-700"
                         >
                           {t}
                         </span>
                       ))}
                     </div>
 
-                    <div className="flex gap-2">
+                    {/* <div className="flex gap-2">
                       <button
                         type="button"
                         className="inline-flex items-center gap-2 px-5 py-2 text-sm font-medium rounded-full border border-gray-200 hover:shadow"
                       >
                         Voir
                       </button>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </article>
@@ -125,8 +143,8 @@ export default function Realisations() {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {/* Réutiliser les images — remplacez selon vos fichiers */}
             {[img1, img2, img3, img4, img5, img6].map((src, i) => (
-              <div key={i} className="bg-white rounded-lg overflow-hidden shadow-sm">
-                <img src={src} alt={`Galerie ${i + 1}`} className="w-full h-32 object-cover" loading="lazy" />
+              <div key={i} className="bg-white rounded-lg overflow-hidden shadow-sm ">
+                <img src={src} alt={`Galerie ${i + 1}`} className="w-full h-full object-cover hover:scale-110 duration-200" loading="lazy" />
               </div>
             ))}
           </div>

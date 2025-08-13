@@ -1,5 +1,11 @@
 import React from 'react'
 import Slider from 'react-slick'
+import img1 from '../../assets/Realisations/hospital.png';
+import img2 from'../../assets/Realisations/ecommerce.jpg';
+import img3 from '../../assets/Realisations/siteVitrine.jpg';
+import img4 from '../../assets/Realisations/analytics.jpg';
+import img5 from '../../assets/Realisations/RH.jpg';
+import img6 from '../../assets/Realisations/microservices.jpg';
 import image1 from '../../assets/softwares.png'
 import image2 from '../../assets/coder.png'
 import image3 from '../../assets/laptop.avif'
@@ -29,6 +35,63 @@ const ImageList = [
     "",
   }
 ]
+
+const projects = [
+    {
+      id: 1,
+      title: 'Plateforme de gestion hospitalière',
+      img: img1,
+      alt: 'Capture écran de la plateforme de gestion hospitalière',
+      description:
+        "Solution complète pour la gestion des patients, chambres et interventions — interface d'administration réactive et tableau de bord temps réel.",
+      tags: ['React', 'Node.js', 'Tailwind']
+    },
+    {
+      id: 2,
+      title: 'Application mobile e-commerce',
+      img: img2,
+      alt: "Pages produit de l'application e-commerce",
+      description:
+        "Application mobile multi-plateformes avec tunnel d'achat optimisé et intégration paiement mobile.",
+      tags: ['React Native', 'Stripe', 'API']
+    },
+    {
+      id: 3,
+      title: 'Site vitrine entreprise',
+      img: img3,
+      alt: 'Design du site vitrine pour une entreprise locale',
+      description:
+        "Design moderne, SEO-friendly, sections portfolio et contact entièrement administrables.",
+      tags: ['React', 'SEO', 'Tailwind']
+    },
+    {
+      id: 4,
+      title: 'Tableau de bord analytique',
+      img: img4,
+      alt: 'Graphiques et métriques sur tableau de bord',
+      description:
+        "Dashboards temps réel pour la visualisation des indicateurs clés, filtres et export CSV/PDF.",
+      tags: ['Charts', 'WebSocket', 'Auth']
+    },
+    {
+      id: 5,
+      title: 'Portail RH & recrutement',
+      img: img5,
+      alt: 'Formulaire de candidature et liste des postes',
+      description:
+        "Système de candidature en ligne avec upload de CV, calendrier d'entretiens et workflow RH.",
+      tags: ['Forms', 'S3', 'Notifications']
+    },
+    {
+      id: 6,
+      title: 'Microservices & API',
+      img: img6,
+      alt: "Diagramme d'architecture microservices",
+      description:
+        "Architecture extensible en microservices, scalabilité et monitoring intégrés.",
+      tags: ['Docker', 'Kubernetes', 'Monitoring']
+    }
+  ];
 
 const Hero = () => {
 
@@ -108,6 +171,57 @@ const Hero = () => {
           </div>
       </div>    
       <Services/>
+
+<section aria-labelledby="projects-heading" className='mx-2 my-6'>
+          <h2 id="projects-heading" className="text-3xl my-3 text-center font-semibold text-gray-800">
+            Nos realisations
+          </h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {projects.map((p) => (
+              <article
+                key={p.id}
+                className="bg-white rounded-2xl shadow-md overflow-hidden flex flex-col h-full"
+              >
+                <div className="h-48 sm:h-56 w-full relative">
+                  <img
+                    src={p.img}
+                    alt={p.alt}
+                    className="w-full h-full object-cover hover:scale-105 duration-200"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-6 flex-1 flex flex-col">
+                  <h3 className="text-lg font-semibold mb-2">{p.title}</h3>
+                  <p className="text-gray-600 text-sm mb-4 flex-1">{p.description}</p>
+
+                  <div className="flex items-center justify-between mt-4">
+                    <div className="flex flex-wrap gap-2">
+                      {p.tags.map((t) => (
+                        <span
+                          key={t}
+                          className="text-xs bg-gray-100 px-2 py-1 rounded-md text-gray-700"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="flex gap-2">
+                      <a
+                        href='/realisations'
+                        className="inline-flex items-center gap-2 px-5 py-2 text-sm font-medium rounded-full border border-gray-200 hover:shadow"
+                      >
+                        Voir
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
       <Customers/>
             <div className='flex backdrop-blur-md flex-col gap-12 justify-center items-center p-10 md:p-30 bg-gradient-to-br from-blue-700 to-blue-300 mx-0 mb-15 w-screen h-[200px] mt-25'>
         <h1 className=' text-white text-2xl font-bold font-serif'>
