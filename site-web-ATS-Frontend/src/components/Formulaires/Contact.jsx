@@ -100,6 +100,7 @@ const Contact = () => {
               <input
                 type="email"
                 id="email"
+                name='email'
                 placeholder="Entrez votre adresse email"
                 className="w-full border border-blue-400 h-10 rounded-md px-3 focus:outline-blue-500"
               />
@@ -111,6 +112,7 @@ const Contact = () => {
               <input
                 type="text"
                 id="objet"
+                name='objet'
                 placeholder="Objet"
                 className="w-full border border-blue-400 h-10 rounded-md px-3 focus:outline-blue-500"
               />

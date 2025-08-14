@@ -23,13 +23,15 @@ const Login = () => {
           
           {/* Email login form */}
           <div className="w-full max-w-md bg-white rounded-md shadow-2xl p-6">
-            <form className="flex flex-col gap-6">
+            <form method='POST'
+            className="flex flex-col gap-6">
               <div className="flex flex-col">
                 <label htmlFor="email" className="mb-1 font-medium">Email</label>
                 <input
                   type="email"
                   id="email"
                   placeholder="Entrez votre adresse email"
+                  name='email'
                   className="w-full border border-blue-400 h-10 rounded-md px-3 focus:outline-blue-500"
                 />
               </div>
@@ -38,6 +40,7 @@ const Login = () => {
                 <input
                   type="password"
                   id="password"
+                  name='password'
                   placeholder="Entrez le mot de passe"
                   className="w-full border border-blue-400 h-10 rounded-md px-3 focus:outline-blue-500"
                 />

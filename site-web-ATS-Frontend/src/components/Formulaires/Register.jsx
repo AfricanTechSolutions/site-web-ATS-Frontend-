@@ -3,10 +3,10 @@ import { FaApple, FaGoogle } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 
 const InputList = [
-  { id: '1', name: 'Nom *', holder: 'Entrez votre nom' },
-  { id: '2', name: 'Email *', holder: 'Entrez votre adresse email' },
-  { id: '3', name: 'Mot de passe *', holder: 'Entrez votre mot de passe' },
-  { id: '4', name: 'Confirmez le mot de passe *', holder: 'Confirmez votre mot de passe' },
+  { id: '1', name: 'nom', holder: 'Entrez votre nom' },
+  { id: '2', name: 'email', holder: 'Entrez votre adresse email' },
+  { id: '3', name: 'password1', holder: 'Entrez votre mot de passe' },
+  { id: '4', name: 'password2', holder: 'Confirmez votre mot de passe' },
 ]
 
 const Register = () => {
@@ -39,6 +39,7 @@ const Register = () => {
                   <input
                     type={data.id === '3' || data.id === '4' ? 'password' : data.id === '1' ? 'text' : 'email'}
                     id={data.name}
+                    name={data.name}
                     placeholder={data.holder}
                     className="w-full border border-blue-400 h-10 rounded-md px-3 focus:outline-blue-500"
                   />

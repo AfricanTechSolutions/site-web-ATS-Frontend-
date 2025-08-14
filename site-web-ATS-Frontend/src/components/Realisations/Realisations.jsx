@@ -139,7 +139,7 @@ export default function Realisations() {
 
         {/* Gallery section */}
         <section className="mt-12">
-          <h3 className="text-2xl font-semibold mb-4">Galerie</h3>
+          <h2 className="text-2xl font-semibold mb-4">Galerie</h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {/* Réutiliser les images — remplacez selon vos fichiers */}
             {[img1, img2, img3, img4, img5, img6].map((src, i) => (
