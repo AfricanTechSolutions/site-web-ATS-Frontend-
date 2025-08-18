@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FaApple, FaGoogle } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 
 const InputList = [
-  { id: '1', name: 'nom', holder: 'Entrez votre nom' },
+  { id: '1', name: 'nom', holder: "Entrez votre nom d'utilisateur" },
   { id: '2', name: 'email', holder: 'Entrez votre adresse email' },
   { id: '3', name: 'password1', holder: 'Entrez votre mot de passe' },
   { id: '4', name: 'password2', holder: 'Confirmez votre mot de passe' },
@@ -11,6 +11,55 @@ const InputList = [
 
 const Register = () => {
   const navigate = useNavigate()
+
+  const [formData, setFormData] = useState({
+    nom: '',
+    email: '',
+    password1: '',
+    password2: '',
+  })
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    })
+  }
+
+    const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    if (formData.password1 !== formData.password2) {
+      alert('Les mots de passe ne correspondent pas')
+      return
+    }
+
+    try {
+      const response = await fetch('http://127.0.0.1:8000/api/users/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: formData.nom,
+          email: formData.email,
+          password: formData.password1
+        }),
+      })
+
+      if (response.ok) {
+        alert('Compte créé avec succès !')
+        navigate('/login') // redirection vers login
+      } else {
+        const data = await response.json()
+        alert('Erreur: ' + JSON.stringify(data))
+      }
+    } catch (error) {
+      console.error('Erreur:', error)
+      alert('Impossible de créer le compte')
+    }
+  }
+
 
   return (
     <div className="min-h-screen w-full flex justify-center items-center bg-gray-100 p-4">
@@ -30,29 +79,31 @@ const Register = () => {
           
           {/* Register with email */}
           <div className="w-full max-w-md bg-white rounded-md shadow-xl p-6">
-            <form method="POST" className="flex flex-col gap-5">
-              {InputList.map((data) => (
-                <div key={data.id} className="flex flex-col">
-                  <label htmlFor={data.name} className="mb-1 font-medium">
-                    {data.name}
-                  </label>
-                  <input
-                    type={data.id === '3' || data.id === '4' ? 'password' : data.id === '1' ? 'text' : 'email'}
-                    id={data.name}
-                    name={data.name}
-                    placeholder={data.holder}
-                    className="w-full border border-blue-400 h-10 rounded-md px-3 focus:outline-blue-500"
-                  />
-                </div>
-              ))}
-              <button
-                type="submit"
-                disabled
-                className="bg-blue-500 text-white font-semibold py-2 px-6 rounded-full mt-4 self-end hover:bg-blue-700 hover:scale-105 duration-200"
-              >
-                S'enregistrer
-              </button>
-            </form>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+  {InputList.map((data) => (
+    <div key={data.id} className="flex flex-col">
+      <label htmlFor={data.name} className="mb-1 font-medium">
+        {data.name}
+      </label>
+      <input
+        type={data.id === '3' || data.id === '4' ? 'password' : data.id === '1' ? 'text' : 'email'}
+        id={data.name}
+        name={data.name}
+        placeholder={data.holder}
+        value={formData[data.name]}
+        onChange={handleChange}
+        className="w-full border border-blue-400 h-10 rounded-md px-3 focus:outline-blue-500"
+      />
+    </div>
+  ))}
+  <button
+    type="submit"
+    className="bg-blue-500 text-white font-semibold py-2 px-6 rounded-full mt-4 self-end hover:bg-blue-700 hover:scale-105 duration-200"
+  >
+    S'enregistrer
+  </button>
+</form>
+
           </div>
 
           {/* Register with Google / Apple */}
