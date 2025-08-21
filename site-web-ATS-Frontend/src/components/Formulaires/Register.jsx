@@ -74,13 +74,9 @@ const Register = () => {
       if (response.status === 201) {
         try {
           // Attempt login directly without CSRF token first
-          const loginResponse = await axios.post('http://127.0.0.1:8000/api/token/', {
+          const loginResponse = await axios.post('http://127.0.0.1:8000/api/auth/login', {
             email: formData.email,
             password: formData.password1
-          }, {
-            headers: {
-              'Content-Type': 'application/json'
-            }
           })
 
           // Store tokens
@@ -91,15 +87,25 @@ const Register = () => {
           axios.defaults.headers.common['Authorization'] = `Bearer ${loginResponse.data.access}`
 
           // Show success message and redirect
-          alert('Compte créé avec succès!')
-          navigate('/user-page')
-        } catch (loginError) {
-          console.error('Login Error:', loginError.response || loginError)
-          setError('Compte créé mais erreur de connexion automatique. Veuillez vous connecter manuellement.')
-          navigate('/login')
-        }
+          // Get user info
+      const userResponse = await axios.get('http://127.0.0.1:8000/api/current-user/');
+      localStorage.setItem('user', JSON.stringify(userResponse.data));
+
+      // Redirect based on user role
+      if (userResponse.data.role === 'admin') {
+        console.log("Success, Admin"); 
+        navigate('/admin');
+      } else {
+        navigate('/user-page');
       }
-    } catch (error) {
+
+      } catch (loginError) {
+        console.error('Login Error:', loginError.response || loginError)
+         setError('Compte créé mais erreur de connexion automatique. Veuillez vous connecter manuellement.')
+        navigate('/login')
+      }
+    }
+  } catch (error) {
       console.error('Registration Error:', error.response || error)
       setError(
         error.response?.data?.detail ||

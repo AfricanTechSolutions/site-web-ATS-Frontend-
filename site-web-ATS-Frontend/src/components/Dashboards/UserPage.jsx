@@ -5,6 +5,13 @@ import { useNavigate } from 'react-router-dom';
 const UserPage = () => {
   const navigate = useNavigate();
 
+  // const userResponse = async () => {
+
+  //   axios.get('http://127.0.0.1:8000/api/current-user/');
+  //   localStorage.setItem('user', JSON.stringify(userResponse.data));
+  // }
+
+
   const handleLogout = async () => {
   try {
     const accessToken = localStorage.getItem('token');
@@ -51,7 +58,7 @@ const UserPage = () => {
         </div>
 
         <div className="mt-8 text-center text-sm text-gray-600">
-          Connecté en tant que <strong>Nom d'utilisateur</strong> <br />
+          Connecté en tant que <strong>{/* userResponse.data.username */} Nom d'utilisateur</strong> <br />
           <button 
             onClick={handleLogout}
             className="text-red-500 text-xl underline hover:text-blue-700 my-6 text-shadow-2xs"

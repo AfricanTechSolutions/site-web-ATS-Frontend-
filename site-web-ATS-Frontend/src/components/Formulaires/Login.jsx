@@ -81,10 +81,10 @@ const Login = () => {
           
           {/* Email login form */}
           <div className="w-full max-w-md bg-white rounded-md shadow-2xl p-6">
-            <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-6 p-2 md:p-4">
               {error && (
-                <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
-                  {error}
+                <div className="bg-white border border-red-400 text-red-700 px-4 py-3 rounded">
+                  Une erreur est survenue lors de la connexion!
                 </div>
               )}
               

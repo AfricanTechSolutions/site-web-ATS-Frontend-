@@ -13,9 +13,240 @@ import {
   FaTrash,
   FaSpinner,
   FaComment,
+  FaCartPlus,
+  FaArchive,
 } from "react-icons/fa";
 import apiService from "../Services/apiService.js";
 import axios from "axios";
+
+const ModalForm = React.memo(({ modalOpen, modalType, editItem, userForm, articleForm, serviceForm, realisationForm, temoignageForm, setModalOpen, setEditItem, handleUserFormChange, handleArticleFormChange, handleServiceFormChange, handleRealisationFormChange, handleTemoignageFormChange, handleSubmit, setUserForm, setArticleForm, setServiceForm, setRealisationForm, setTemoignageForm, loading }) => {
+  if (!modalOpen) return null;
+
+  return (
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+      <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md max-h-[90vh] overflow-y-auto">
+        <h2 className="text-xl font-bold mb-4">
+          {editItem ? `Modifier ${modalType}` : `Ajouter ${modalType}`}
+        </h2>
+        {modalType === "user" && (
+          <div className="space-y-4">
+            <div>
+              <label className="block text-gray-700">Nom d'utilisateur</label>
+              <input
+                type="text"
+                value={userForm.username}
+                onChange={(e) => handleUserFormChange('username', e.target.value)}
+                className="w-full p-2 border rounded"
+                required
+              />
+            </div>
+            <div>
+              <label className="block text-gray-700">Email</label>
+              <input
+                type="email"
+                value={userForm.email}
+                onChange={(e) => handleUserFormChange('email', e.target.value)}
+                className="w-full p-2 border rounded"
+                required
+              />
+            </div>
+            <div>
+              <label className="block text-gray-700">Mot de passe</label>
+              <input
+                type="password"
+                value={userForm.password}
+                onChange={(e) => handleUserFormChange('password', e.target.value)}
+                className="w-full p-2 border rounded"
+                required={!editItem}
+              />
+            </div>
+          </div>
+        )}
+        {modalType === "article" && (
+          <div className="space-y-4">
+            <div>
+              <label className="block text-gray-700">Titre</label>
+              <input
+                type="text"
+                value={articleForm.titre}
+                onChange={(e) => handleArticleFormChange('titre', e.target.value)}
+                className="w-full p-2 border rounded"
+                required
+              />
+            </div>
+            <div>
+              <label className="block text-gray-700">Description</label>
+              <textarea
+                value={articleForm.description}
+                onChange={(e) => handleArticleFormChange('description', e.target.value)}
+                className="w-full p-2 border rounded"
+                required
+              />
+            </div>
+          </div>
+        )}
+        {modalType === "service" && (
+          <div className="space-y-4">
+            <div>
+              <label className="block text-gray-700">Titre</label>
+              <input
+                type="text"
+                value={serviceForm.titre}
+                onChange={(e) => handleServiceFormChange('titre', e.target.value)}
+                className="w-full p-2 border rounded"
+                required
+              />
+            </div>
+            <div>
+              <label className="block text-gray-700">Description</label>
+              <textarea
+                value={serviceForm.description}
+                onChange={(e) => handleServiceFormChange('description', e.target.value)}
+                className="w-full p-2 border rounded"
+                required
+              />
+            </div>
+            <div>
+              <label className="block text-gray-700">Image</label>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={(e) => handleServiceFormChange('img', e.target.files[0])}
+                className="w-full p-2 border rounded"
+              />
+              <small className="text-gray-500 text-sm">Téléchargez une image pour ce service (optionnel)</small>
+              {editItem && editItem.img && (
+                <div className="mt-2">
+                  <p className="text-gray-600 text-sm">Image actuelle :</p>
+                  <img
+                    src={editItem.img}
+                    alt="Image actuelle"
+                    className="w-24 h-24 object-cover rounded mt-1"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                    }}
+                  />
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+        {modalType === "portfolio" && (
+          <div className="space-y-4">
+            <div>
+              <label className="block text-gray-700">Titre</label>
+              <input
+                type="text"
+                value={realisationForm.titre}
+                onChange={(e) => handleRealisationFormChange('titre', e.target.value)}
+                className="w-full p-2 border rounded"
+                required
+              />
+            </div>
+            <div>
+              <label className="block text-gray-700">Description</label>
+              <textarea
+                value={realisationForm.description}
+                onChange={(e) => handleRealisationFormChange('description', e.target.value)}
+                className="w-full p-2 border rounded"
+                required
+              />
+            </div>
+            <div>
+              <label className="block text-gray-700">Client</label>
+              <input
+                type="text"
+                value={realisationForm.client}
+                onChange={(e) => handleRealisationFormChange('client', e.target.value)}
+                className="w-full p-2 border rounded"
+                required
+              />
+            </div>
+            <div>
+              <label className="block text-gray-700">Technologies</label>
+              <input
+                type="text"
+                value={realisationForm.technologies_names}
+                onChange={(e) => handleRealisationFormChange('technologies_names', e.target.value)}
+                className="w-full p-2 border rounded"
+                placeholder="e.g., React, Django, PostgreSQL"
+              />
+            </div>
+            <div>
+              <label className="block text-gray-700">Image</label>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={(e) => handleRealisationFormChange('img', e.target.files[0])}
+                className="w-full p-2 border rounded"
+              />
+              <small className="text-gray-500 text-sm">Téléchargez une image pour ce projet (optionnel)</small>
+              {editItem && editItem.img && (
+                <div className="mt-2">
+                  <p className="text-gray-600 text-sm">Image actuelle :</p>
+                  <img
+                    src={editItem.img}
+                    alt="Image actuelle"
+                    className="w-24 h-24 object-cover rounded mt-1"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                    }}
+                  />
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+        {modalType === "temoignage" && (
+          <div className="space-y-4">
+            <div>
+              <label className="block text-gray-700">Nom</label>
+              <input
+                type="text"
+                value={temoignageForm.nom}
+                onChange={(e) => handleTemoignageFormChange('nom', e.target.value)}
+                className="w-full p-2 border rounded"
+                required
+              />
+            </div>
+            <div>
+              <label className="block text-gray-700">Contenu</label>
+              <textarea
+                value={temoignageForm.description}
+                onChange={(e) => handleTemoignageFormChange('description', e.target.value)}
+                className="w-full p-2 border rounded"
+                required
+              />
+            </div>
+          </div>
+        )}
+        <div className="flex justify-end gap-2 mt-4">
+          <button
+            onClick={() => {
+              setModalOpen(false);
+              setEditItem(null);
+              setUserForm({ username: "", email: "", password: "" });
+              setArticleForm({ titre: "", description: "" });
+              setServiceForm({ titre: "", description: "", img: null });
+              setRealisationForm({ titre: "", description: "", client: "", technologies: "", img: null });
+              setTemoignageForm({ nom: "", description: "" });
+            }}
+            className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
+          >
+            Annuler
+          </button>
+          <button
+            onClick={() => handleSubmit(modalType)}
+            disabled={loading}
+            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:opacity-50"
+          >
+            {editItem ? "Modifier" : "Ajouter"}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+});
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -28,7 +259,6 @@ const Dashboard = () => {
   const [modalType, setModalType] = useState(null);
   const [editItem, setEditItem] = useState(null);
 
-  // Update stats state to include all fields from backend
   const [stats, setStats] = useState({
     total_users: 0,
     total_articles: 0,
@@ -45,14 +275,12 @@ const Dashboard = () => {
   const [portfolio, setPortfolio] = useState([]);
   const [temoignages, setTemoignages] = useState([]);
 
-  // Form states
   const [userForm, setUserForm] = useState({ username: "", email: "", password: "" });
   const [articleForm, setArticleForm] = useState({ titre: "", description: "" });
-  const [serviceForm, setServiceForm] = useState({ titre: "", description: "", image: "" });
-  const [realisationForm, setRealisationForm] = useState({ titre: "", description: "", client: "", technologies: "" });
-  const [temoignageForm, setTemoignageForm] = useState({ nom: "", content: "" });
+  const [serviceForm, setServiceForm] = useState({ titre: "", description: "", img: null });
+  const [realisationForm, setRealisationForm] = useState({ titre: "", description: "", client: "", technologies_names: [], img: null });
+  const [temoignageForm, setTemoignageForm] = useState({ nom: "", description: "" });
 
-  // Memoize loadData with useCallback
   const loadData = useCallback(async () => {
     setLoading(true);
     setError(null);
@@ -89,14 +317,7 @@ const Dashboard = () => {
     }
   }, [currentView]);
 
-  // Load current user and data
   useEffect(() => {
-    // const token = localStorage.getItem("token");
-    // if (!token) {
-    //   navigate("/login");
-    //   return;
-    // }
-
     const fetchCurrentUser = async () => {
       try {
         const userData = await apiService.getCurrentUser();
@@ -110,7 +331,6 @@ const Dashboard = () => {
     loadData();
   }, [navigate, loadData]);
 
-  // Handle remove functions
   const handleRemove = async (id, type) => {
     if (!confirm(`Êtes-vous sûr de vouloir supprimer cet élément ?`)) return;
 
@@ -136,7 +356,6 @@ const Dashboard = () => {
     }
   };
 
-  // Handle add/edit functions
   const handleSubmit = async (type) => {
     try {
       setLoading(true);
@@ -162,25 +381,39 @@ const Dashboard = () => {
         }
         setArticleForm({ titre: "", description: "" });
       } else if (type === "service") {
-        const data = { ...serviceForm, auteur: currentUser?.id };
+        const formData = new FormData();
+        formData.append('titre', serviceForm.titre);
+        formData.append('description', serviceForm.description);
+        formData.append('auteur', currentUser?.id);
+        if (serviceForm.img) {
+          formData.append('img', serviceForm.img);
+        }
         if (editItem) {
-          response = await apiService.updateService(editItem.id, data);
+          response = await apiService.updateService(editItem.id, formData);
           setServices((prev) => prev.map((s) => (s.id === editItem.id ? response : s)));
         } else {
-          response = await apiService.createService(data);
+          response = await apiService.createService(formData);
           setServices((prev) => [response, ...prev]);
         }
-        setServiceForm({ titre: "", description: "" });
+        setServiceForm({ titre: "", description: "", img: null });
       } else if (type === "portfolio") {
-        const data = { ...realisationForm, auteur: currentUser?.id };
+        const formData = new FormData();
+        formData.append('titre', realisationForm.titre);
+        formData.append('description', realisationForm.description);
+        formData.append('client', realisationForm.client);
+        formData.append('technologies_names', realisationForm.technologies_names);
+        formData.append('auteur', currentUser?.id);
+        if (realisationForm.img) {
+          formData.append('img', realisationForm.img);
+        }
         if (editItem) {
-          response = await apiService.updateRealisation(editItem.id, data);
+          response = await apiService.updateRealisation(editItem.id, formData);
           setPortfolio((prev) => prev.map((p) => (p.id === editItem.id ? response : p)));
         } else {
-          response = await apiService.createRealisation(data);
+          response = await apiService.createRealisation(formData);
           setPortfolio((prev) => [response, ...prev]);
         }
-        setRealisationForm({ titre: "", description: "", client: "", technologies: "" });
+        setRealisationForm({ titre: "", description: "", client: "", technologies_names: [], img: null });
       } else if (type === "temoignage") {
         const data = { ...temoignageForm, auteur: currentUser?.id };
         if (editItem) {
@@ -190,7 +423,7 @@ const Dashboard = () => {
           response = await apiService.createTemoignage(data);
           setTemoignages((prev) => [response, ...prev]);
         }
-        setTemoignageForm({ nom: "", content: "" });
+        setTemoignageForm({ nom: "", description: "" });
       }
 
       setModalOpen(false);
@@ -202,7 +435,6 @@ const Dashboard = () => {
     }
   };
 
-  // Handle user suspend/activate
   const handleSuspend = async (userId) => {
     try {
       setLoading(true);
@@ -226,220 +458,58 @@ const Dashboard = () => {
     }
   };
 
-  // Open modal for add/edit
+  const handleUserFormChange = useCallback((field, value) => {
+    setUserForm(prev => ({ ...prev, [field]: value }));
+  }, []);
+
+  const handleArticleFormChange = useCallback((field, value) => {
+    setArticleForm(prev => ({ ...prev, [field]: value }));
+  }, []);
+
+  const handleServiceFormChange = useCallback((field, value) => {
+    setServiceForm(prev => ({ ...prev, [field]: value }));
+  }, []);
+
+  const handleRealisationFormChange = useCallback((field, value) => {
+    setRealisationForm(prev => ({ ...prev, [field]: value }));
+  }, []);
+
+  const handleTemoignageFormChange = useCallback((field, value) => {
+    setTemoignageForm(prev => ({ ...prev, [field]: value }));
+  }, []);
+
   const openModal = (type, item = null) => {
     setModalType(type);
     setEditItem(item);
     if (item) {
       if (type === "user") setUserForm({ username: item.username, email: item.email, password: "" });
       else if (type === "article") setArticleForm({ titre: item.titre, description: item.description });
-      else if (type === "service") setServiceForm({ titre: item.titre, description: item.description });
-      else if (type === "portfolio") setRealisationForm({ titre: item.titre, description: item.description, client: item.client, technologies: item.technologies });
-      else if (type === "temoignage") setTemoignageForm({ nom: item.nom, content: item.content });
+      else if (type === "service") setServiceForm({ titre: item.titre, description: item.description, img: null });
+      else if (type === "portfolio") setRealisationForm({ 
+        titre: item.titre, 
+        description: item.description, 
+        client: item.client, 
+        technologies_names: item.technologies_names,
+        img: null
+      });
+      else if (type === "temoignage") setTemoignageForm({ nom: item.nom, description: item.description });
     }
     setModalOpen(true);
   };
 
-  // Error display component
   const ErrorMessage = ({ message }) => (
-    <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+    <div className="bg-white border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
       <strong>Erreur:</strong> {message}
     </div>
   );
 
-  // Loading spinner component
   const LoadingSpinner = () => (
     <div className="flex justify-center items-center py-8">
-      <FaSpinner className="animate-spin text-2xl text-blue-500" />
-      <span className="ml-2">Chargement...</span>
+      <FaSpinner className="animate-spin text-2xl md:text-4xl text-blue-500" />
+      <span className="ml-2 md:text-xl">Chargement...</span>
     </div>
   );
 
-  // Modal form component
-  const ModalForm = () => {
-    if (!modalOpen) return null;
-
-    return (
-      <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-        <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
-          <h2 className="text-xl font-bold mb-4">
-            {editItem ? `Modifier ${modalType}` : `Ajouter ${modalType}`}
-          </h2>
-          {modalType === "user" && (
-            <div className="space-y-4">
-              <div>
-                <label className="block text-gray-700">Nom d'utilisateur</label>
-                <input
-                  type="text"
-                  value={userForm.username}
-                  onChange={(e) => setUserForm({ ...userForm, username: e.target.value })}
-                  className="w-full p-2 border rounded"
-                  required
-                />
-              </div>
-              <div>
-                <label className="block text-gray-700">Email</label>
-                <input
-                  type="email"
-                  value={userForm.email}
-                  onChange={(e) => setUserForm({ ...userForm, email: e.target.value })}
-                  className="w-full p-2 border rounded"
-                  required
-                />
-              </div>
-              <div>
-                <label className="block text-gray-700">Mot de passe</label>
-                <input
-                  type="password"
-                  value={userForm.password}
-                  onChange={(e) => setUserForm({ ...userForm, password: e.target.value })}
-                  className="w-full p-2 border rounded"
-                  required={!editItem}
-                />
-              </div>
-            </div>
-          )}
-          {modalType === "article" && (
-            <div className="space-y-4">
-              <div>
-                <label className="block text-gray-700">Titre</label>
-                <input
-                  type="text"
-                  value={articleForm.titre}
-                  onChange={(e) => setArticleForm({ ...articleForm, titre: e.target.value })}
-                  className="w-full p-2 border rounded"
-                  required
-                />
-              </div>
-              <div>
-                <label className="block text-gray-700">Description</label>
-                <textarea
-                  value={articleForm.description}
-                  onChange={(e) => setArticleForm({ ...articleForm, description: e.target.value })}
-                  className="w-full p-2 border rounded"
-                  required
-                />
-              </div>
-            </div>
-          )}
-          {modalType === "service" && (
-            <div className="space-y-4">
-              <div>
-                <label className="block text-gray-700">Titre</label>
-                <input
-                  type="text"
-                  value={serviceForm.titre}
-                  onChange={(e) => setServiceForm({ ...serviceForm, titre: e.target.value })}
-                  className="w-full p-2 border rounded"
-                  required
-                />
-              </div>
-              <div>
-                <label className="block text-gray-700">Description</label>
-                <textarea
-                  value={serviceForm.description}
-                  onChange={(e) => setServiceForm({ ...serviceForm, description: e.target.value })}
-                  className="w-full p-2 border rounded"
-                  required
-                />
-              </div>
-            </div>
-          )}
-          {modalType === "portfolio" && (
-            <div className="space-y-4">
-              <div>
-                <label className="block text-gray-700">Titre</label>
-                <input
-                  type="text"
-                  value={realisationForm.titre}
-                  onChange={(e) => setRealisationForm({ ...realisationForm, titre: e.target.value })}
-                  className="w-full p-2 border rounded"
-                  required
-                />
-              </div>
-              <div>
-                <label className="block text-gray-700">Description</label>
-                <textarea
-                  value={realisationForm.description}
-                  onChange={(e) => setRealisationForm({ ...realisationForm, description: e.target.value })}
-                  className="w-full p-2 border rounded"
-                  required
-                />
-              </div>
-              <div>
-                <label className="block text-gray-700">Client</label>
-                <input
-                  type="text"
-                  value={realisationForm.client}
-                  onChange={(e) => setRealisationForm({ ...realisationForm, client: e.target.value })}
-                  className="w-full p-2 border rounded"
-                  required
-                />
-              </div>
-              <div>
-                <label className="block text-gray-700">Technologies</label>
-                <input
-                  type="text"
-                  value={realisationForm.technologies}
-                  onChange={(e) => setRealisationForm({ ...realisationForm, technologies: e.target.value })}
-                  className="w-full p-2 border rounded"
-                  placeholder="e.g., React, Django, PostgreSQL"
-                />
-              </div>
-            </div>
-          )}
-          {modalType === "temoignage" && (
-            <div className="space-y-4">
-              <div>
-                <label className="block text-gray-700">Nom</label>
-                <input
-                  type="text"
-                  value={temoignageForm.nom}
-                  onChange={(e) => setTemoignageForm({ ...temoignageForm, nom: e.target.value })}
-                  className="w-full p-2 border rounded"
-                  required
-                />
-              </div>
-              <div>
-                <label className="block text-gray-700">Contenu</label>
-                <textarea
-                  value={temoignageForm.content}
-                  onChange={(e) => setTemoignageForm({ ...temoignageForm, content: e.target.value })}
-                  className="w-full p-2 border rounded"
-                  required
-                />
-              </div>
-            </div>
-          )}
-          <div className="flex justify-end gap-2 mt-4">
-            <button
-              onClick={() => {
-                setModalOpen(false);
-                setEditItem(null);
-                setUserForm({ username: "", email: "", password: "" });
-                setArticleForm({ titre: "", description: "" });
-                setServiceForm({ titre: "", description: "" });
-                setRealisationForm({ titre: "", description: "", client: "", technologies: "" });
-                setTemoignageForm({ nom: "", content: "" });
-              }}
-              className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
-            >
-              Annuler
-            </button>
-            <button
-              onClick={() => handleSubmit(modalType)}
-              disabled={loading}
-              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:opacity-50"
-            >
-              {editItem ? "Modifier" : "Ajouter"}
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
-  // Table renderers
   const renderArticlesTable = () => (
     <div className="bg-white shadow-md rounded-lg p-4 sm:p-6 mb-8 max-w-full mx-2">
       <div className="flex justify-between items-center mb-4">
@@ -516,6 +586,7 @@ const Dashboard = () => {
             <tr className="bg-blue-500 text-gray-200">
               <th className="p-2 text-left">Titre</th>
               <th className="p-2 text-left">Description</th>
+              <th className="p-2 text-left">Image</th>
               <th className="p-2 text-left">Auteur</th>
               <th className="p-2 text-center">Actions</th>
             </tr>
@@ -525,6 +596,20 @@ const Dashboard = () => {
               <tr key={srv.id} className="odd:bg-white even:bg-blue-100 hover:bg-gray-100 transition-colors">
                 <td className="p-2">{srv.titre}</td>
                 <td className="p-2">{srv.description}</td>
+                <td className="p-2">
+                  {srv.img ? (
+                    <img 
+                      src={srv.img} 
+                      alt={srv.titre}
+                      className="w-12 h-12 object-cover rounded"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                      }}
+                    />
+                  ) : (
+                    <span className="text-gray-400 text-xs">Aucune image</span>
+                  )}
+                </td>
                 <td className="p-2">{srv.auteur_username}</td>
                 <td className="p-2 text-center flex gap-2 justify-center">
                   <button
@@ -559,7 +644,7 @@ const Dashboard = () => {
         <button
           onClick={() => openModal("portfolio")}
           disabled={loading}
-          className="flex items-center gap-2 bg-orange-600 text-white px-3 py-2 rounded hover:bg-orange-700 transition disabled:opacity-50"
+          className="flex items-center gap-2 bg-purple-600 text-white px-3 py-2 rounded hover:bg-purple-700 transition disabled:opacity-50"
         >
           <FaPlus /> Ajouter
         </button>
@@ -573,6 +658,7 @@ const Dashboard = () => {
               <th className="p-2 text-left">Projet</th>
               <th className="p-2 text-left">Client</th>
               <th className="p-2 text-left">Technologies</th>
+              <th className="p-2 text-left">Image</th>
               <th className="p-2 text-left">Auteur</th>
               <th className="p-2 text-center">Actions</th>
             </tr>
@@ -582,7 +668,21 @@ const Dashboard = () => {
               <tr key={p.id} className="odd:bg-white even:bg-blue-100 hover:bg-gray-100 transition-colors">
                 <td className="p-2">{p.titre}</td>
                 <td className="p-2">{p.client}</td>
-                <td className="p-2">{p.technologies}</td>
+                <td className="p-2">{p.technologies_names}</td>
+                <td className="p-2">
+                  {p.img ? (
+                    <img 
+                      src={p.img} 
+                      alt={p.titre}
+                      className="w-12 h-12 object-cover rounded"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                      }}
+                    />
+                  ) : (
+                    <span className="text-gray-400 text-xs">Aucune image</span>
+                  )}
+                </td>
                 <td className="p-2">{p.auteur_username}</td>
                 <td className="p-2 text-center flex gap-2 justify-center">
                   <button
@@ -638,7 +738,7 @@ const Dashboard = () => {
             {temoignages.map((tem) => (
               <tr key={tem.id} className="odd:bg-white even:bg-blue-100 hover:bg-gray-100 transition-colors">
                 <td className="p-2">{tem.nom}</td>
-                <td className="p-2">{tem.content}</td>
+                <td className="p-2">{tem.description}</td>
                 <td className="p-2">{tem.auteur_username}</td>
                 <td className="p-2 text-center flex gap-2 justify-center">
                   <button
@@ -733,8 +833,7 @@ const Dashboard = () => {
   );
 
   return (
-    <div className="min-h-screen flex bg-gray-100">
-      {/* Mobile overlay when sidebar is open */}
+    <div className="min-h-screen flex bg-slate-50">
       <div
         className={`fixed inset-0 bg-black/50 z-40 lg:hidden transition-opacity ${
           sidebarOpen ? "opacity-100" : "opacity-0 pointer-events-none"
@@ -742,8 +841,6 @@ const Dashboard = () => {
         onClick={() => setSidebarOpen(false)}
         aria-hidden={!sidebarOpen}
       />
-
-      {/* Sidebar */}
       <aside
         className={`fixed left-0 top-15 lg:top-0 lg:bottom-0 w-64 h-full bg-blue-700 text-white transform ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
@@ -798,8 +895,6 @@ const Dashboard = () => {
           </button>
         </nav>
       </aside>
-
-      {/* Main content */}
       <main className="flex-1 lg:ml-64 p-4 sm:p-6 overflow-auto">
         <div className="flex items-center justify-between py-2 mb-6 px-2 w-full">
           <button
@@ -820,7 +915,30 @@ const Dashboard = () => {
           <div className="w-8 lg:hidden" />
         </div>
 
-        <ModalForm />
+        <ModalForm
+          modalOpen={modalOpen}
+          modalType={modalType}
+          editItem={editItem}
+          userForm={userForm}
+          articleForm={articleForm}
+          serviceForm={serviceForm}
+          realisationForm={realisationForm}
+          temoignageForm={temoignageForm}
+          setModalOpen={setModalOpen}
+          setEditItem={setEditItem}
+          handleUserFormChange={handleUserFormChange}
+          handleArticleFormChange={handleArticleFormChange}
+          handleServiceFormChange={handleServiceFormChange}
+          handleRealisationFormChange={handleRealisationFormChange}
+          handleTemoignageFormChange={handleTemoignageFormChange}
+          handleSubmit={handleSubmit}
+          setUserForm={setUserForm}
+          setArticleForm={setArticleForm}
+          setServiceForm={setServiceForm}
+          setRealisationForm={setRealisationForm}
+          setTemoignageForm={setTemoignageForm}
+          loading={loading}
+        />
 
         {currentView === "dashboard" && (
           <div>
@@ -835,23 +953,20 @@ const Dashboard = () => {
                     <h2 className="text-2xl font-bold">{stats.total_users}</h2>
                   </div>
                 </div>
-
                 <div className="bg-white shadow-md rounded-lg p-4 flex items-center gap-4 border border-green-500">
-                  <FaEye className="text-green-500 text-3xl" />
+                  <FaComment className="text-green-500 text-3xl" />
                   <div>
-                    <p className="text-gray-500">Utilisateurs Actifs</p>
-                    <h2 className="text-2xl font-bold">{stats.active_users}</h2>
+                    <p className="text-gray-500">Total temoingages</p>
+                    <h2 className="text-2xl font-bold">{stats.total_temoignages}</h2>
                   </div>
                 </div>
-
-                <div className="bg-white shadow-md rounded-lg p-4 flex items-center gap-4 border border-red-500">
-                  <FaBan className="text-red-500 text-3xl" />
+                <div className="bg-white shadow-md rounded-lg p-4 flex items-center gap-4 border border-pink-500">
+                  <FaArchive className="text-red-500/80 text-3xl" />
                   <div>
-                    <p className="text-gray-500">Utilisateurs Suspendus</p>
-                    <h2 className="text-2xl font-bold">{stats.suspended_users}</h2>
+                    <p className="text-gray-500">Total realisations</p>
+                    <h2 className="text-2xl font-bold">{stats.total_realisations}</h2>
                   </div>
                 </div>
-
                 <div className="bg-white shadow-md rounded-lg p-4 flex items-center gap-4 border border-purple-500">
                   <FaFileAlt className="text-purple-500 text-3xl" />
                   <div>
@@ -859,17 +974,15 @@ const Dashboard = () => {
                     <h2 className="text-2xl font-bold">{stats.total_articles}</h2>
                   </div>
                 </div>
-
-                <div className="bg-white shadow-md rounded-lg p-4 flex items-center gap-4 border border-yellow-500">
-                  <FaComment className="text-yellow-500 text-3xl" />
+                <div className="bg-white shadow-md rounded-lg p-4 flex items-center gap-4 border border-orange-500">
+                  <FaComment className="text-orange-500 text-3xl" />
                   <div>
-                    <p className="text-gray-500">Nouveaux utilisateurs (30j)</p>
+                    <p className="text-gray-500">Nouveaux utilisateurs</p>
                     <h2 className="text-2xl font-bold">{stats.recent_users}</h2>
                   </div>
                 </div>
-
                 <div className="bg-white shadow-md rounded-lg p-4 flex items-center gap-4 border border-teal-500">
-                  <FaFileAlt className="text-teal-500 text-3xl" />
+                  <FaCartPlus className="text-teal-500 text-3xl" />
                   <div>
                     <p className="text-gray-500">Total Services</p>
                     <h2 className="text-2xl font-bold">{stats.total_services}</h2>
