@@ -50,7 +50,7 @@ export default function Realisations() {
   }
 
   // Default image for banner if no projects are available
-  const bannerImage = projects.length > 0 ? projects[2].image : '/path/to/fallback.jpg';
+  const bannerImage = projects.length > 0 ? projects[2].image : '../../assets/image.png';
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-800">

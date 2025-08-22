@@ -9,7 +9,7 @@ import Register from './components/Formulaires/Register';
 import AllServices from './components/Services/AllServices';
 import About from './components/About/About';
 import Contact from './components/Formulaires/Contact';
-import ApplicationForm from './components/Dashboards/applicationForm';
+import ApplicationForm from './components/Dashboards/ApplicationForm';
 import UserPage from './components/Dashboards/UserPage';
 import Dashboard from './components/Dashboards/Dashboard';
 import Realisations from './components/Realisations/Realisations';

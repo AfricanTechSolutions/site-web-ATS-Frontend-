@@ -219,6 +219,18 @@ const apiService = {
       throw error.response?.data || { detail: 'Failed to fetch current user' };
     }
   },
+  createCandidature: async (data) => {
+  try {
+    const response = await axios.post(`${API_BASE_URL}/candidatures/`, data, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return response.data;
+  } catch (error) {
+    throw error.response?.data || { detail: 'Failed to create candidature' };
+  }
+},
 };
 
 export default apiService;

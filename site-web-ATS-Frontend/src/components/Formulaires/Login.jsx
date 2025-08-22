@@ -84,7 +84,7 @@ const Login = () => {
             <form onSubmit={handleSubmit} className="flex flex-col gap-6 p-2 md:p-4">
               {error && (
                 <div className="bg-white border border-red-400 text-red-700 px-4 py-3 rounded">
-                  Une erreur est survenue lors de la connexion!
+                  Une erreur est survenue lors de la connexion Veilluez reessayer!
                 </div>
               )}
               
@@ -119,7 +119,7 @@ const Login = () => {
               <button
                 type="submit"
                 disabled={loading || !formData.email || !formData.password}
-                className="bg-blue-500 text-white font-semibold py-2 px-6 rounded-full mt-4 self-end hover:bg-blue-700 hover:scale-105 duration-200 disabled:opacity-50 disabled:hover:scale-100"
+                className="bg-blue-500 disabled:bg-blue-600 text-white font-semibold py-2 px-6 rounded-full mt-4 self-end hover:bg-blue-700 hover:scale-105 duration-200 disabled:opacity-50 disabled:hover:scale-100"
               >
                 {loading ? 'Connexion...' : 'Se connecter'}
               </button>
