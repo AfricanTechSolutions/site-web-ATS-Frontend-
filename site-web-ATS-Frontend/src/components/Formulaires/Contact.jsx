@@ -1,5 +1,7 @@
+
 import React from 'react';
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaClock } from 'react-icons/fa';
+import ContactForm from './ContactForm'; // Adjust the import path based on your file structure
 import img1 from '../../assets/image.png';
 
 const Contact = () => {
@@ -88,55 +90,7 @@ const Contact = () => {
         </div>
 
         {/* Contact Form */}
-        <div className="flex-1">
-          <form className="bg-white rounded-md shadow-2xl p-6 flex flex-col gap-6 w-full min-h-[420px]">
-            <fieldset className="mb-4">
-              <legend className="font-semibold text-gray-800">Envoyer un email</legend>
-            </fieldset>
-            <div className="flex flex-col">
-              <label htmlFor="email" className="mb-1 font-medium">
-                Email*
-              </label>
-              <input
-                type="email"
-                id="email"
-                name='email'
-                placeholder="Entrez votre adresse email"
-                className="w-full border border-blue-400 h-10 rounded-md px-3 focus:outline-blue-500"
-              />
-            </div>
-            <div className="flex flex-col">
-              <label htmlFor="objet" className="mb-1 font-medium">
-                Objet du message
-              </label>
-              <input
-                type="text"
-                id="objet"
-                name='objet'
-                placeholder="Objet"
-                className="w-full border border-blue-400 h-10 rounded-md px-3 focus:outline-blue-500"
-              />
-            </div>
-            <div className="flex flex-col flex-1">
-              <label htmlFor="message" className="mb-1 font-medium">
-                Message*
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                placeholder="Entrez votre message ici"
-                className="w-full border border-blue-400 rounded-md px-3 h-40 lg:h-60 focus:outline-blue-500 p-3 text-gray-700 resize-none"
-              />
-            </div>
-            <button
-              type="submit"
-              disabled
-              className="bg-blue-500 text-white font-semibold py-2 px-6 rounded-full self-end hover:bg-blue-700 hover:scale-105 duration-200"
-            >
-              Envoyer
-            </button>
-          </form>
-        </div>
+        <ContactForm />
       </div>
 
       {/* Map Section */}

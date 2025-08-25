@@ -135,8 +135,8 @@ const Register = () => {
         <div className="flex flex-col lg:flex-row gap-6 justify-center relative z-10">
           
           {/* Register with email */}
-          <div className="w-full max-w-md bg-white rounded-md shadow-xl p-6">
-            <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+          <div className="w-full md:w-3/2 bg-white rounded-md shadow-xl p-6 lg:w-[25rem] ">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-5 w-full">
       {error && (
         <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
           {error}
@@ -176,7 +176,7 @@ const Register = () => {
           </div>
 
           {/* Register with Google / Apple */}
-          <div className="w-full max-w-md bg-white rounded-md shadow-2xl p-6 flex flex-col items-center gap-6">
+          <div className="w-full md:w-3/2 bg-white rounded-md shadow-2xl p-6 flex flex-col items-center gap-6 lg:w-[25rem] justify-center">
             <div className="text-center">
               <h2 className="text-xl mb-2">Ou</h2>
               <p className="text-gray-500">S'enregistrer avec</p>

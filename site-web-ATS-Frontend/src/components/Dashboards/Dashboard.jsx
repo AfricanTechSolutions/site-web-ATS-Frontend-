@@ -536,7 +536,7 @@ const Dashboard = () => {
           </thead>
           <tbody>
             {articles.map((art) => (
-              <tr key={art.id} className="odd:bg-white even:bg-blue-100 hover:bg-gray-100 transition-colors">
+              <tr key={art.id} className="odd:bg-white even:bg-blue-100 odd:hover:bg-gray-100 transition-colors odd:text-gray-800">
                 <td className="p-2">{art.titre}</td>
                 <td className="p-2">{art.auteur_username}</td>
                 <td className="p-2">{new Date(art.heure_cree).toLocaleDateString()}</td>
@@ -593,7 +593,7 @@ const Dashboard = () => {
           </thead>
           <tbody>
             {services.map((srv) => (
-              <tr key={srv.id} className="odd:bg-white even:bg-blue-100 hover:bg-gray-100 transition-colors">
+              <tr key={srv.id} className="odd:bg-white even:bg-blue-100 hover:bg-gray-100 transition-colors odd:text-gray-700">
                 <td className="p-2">{srv.titre}</td>
                 <td className="p-2">{srv.description}</td>
                 <td className="p-2">
@@ -665,7 +665,7 @@ const Dashboard = () => {
           </thead>
           <tbody>
             {portfolio.map((p) => (
-              <tr key={p.id} className="odd:bg-white even:bg-blue-100 hover:bg-gray-100 transition-colors">
+              <tr key={p.id} className="odd:bg-white even:bg-blue-100 odd:hover:bg-gray-100 transition-colors odd:text-gray-800">
                 <td className="p-2">{p.titre}</td>
                 <td className="p-2">{p.client}</td>
                 <td className="p-2">{p.technologies_names}</td>
@@ -736,7 +736,7 @@ const Dashboard = () => {
           </thead>
           <tbody>
             {temoignages.map((tem) => (
-              <tr key={tem.id} className="odd:bg-white even:bg-blue-100 hover:bg-gray-100 transition-colors">
+              <tr key={tem.id} className="odd:bg-white even:bg-blue-100 odd:hover:bg-gray-100 transition-colors odd:text-gray-800">
                 <td className="p-2">{tem.nom}</td>
                 <td className="p-2">{tem.description}</td>
                 <td className="p-2">{tem.auteur_username}</td>
@@ -792,7 +792,7 @@ const Dashboard = () => {
           </thead>
           <tbody>
             {usersList.map((user) => (
-              <tr key={user.id} className="odd:bg-white even:bg-blue-100 hover:bg-gray-100 transition-colors">
+              <tr key={user.id} className="odd:bg-white even:bg-blue-100 hover:bg-gray-100 transition-colors odd:text-gray-700">
                 <td className="p-2">{user.username}</td>
                 <td className="p-2">{user.email}</td>
                 <td className="p-2">
