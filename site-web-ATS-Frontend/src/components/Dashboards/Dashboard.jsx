@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   FaUsers,
-  FaEye,
   FaFileAlt,
   FaEdit,
   FaBan,
@@ -15,6 +14,7 @@ import {
   FaComment,
   FaCartPlus,
   FaArchive,
+  FaFilePdf,
 } from "react-icons/fa";
 import apiService from "../Services/apiService.js";
 import axios from "axios";
@@ -274,6 +274,7 @@ const Dashboard = () => {
   const [services, setServices] = useState([]);
   const [portfolio, setPortfolio] = useState([]);
   const [temoignages, setTemoignages] = useState([]);
+  const [candidatures, setCandidatures] = useState([]);
 
   const [userForm, setUserForm] = useState({ username: "", email: "", password: "" });
   const [articleForm, setArticleForm] = useState({ titre: "", description: "" });
@@ -308,6 +309,10 @@ const Dashboard = () => {
       } else if (currentView === "temoignage") {
         const temoignagesData = await apiService.getTemoignages();
         setTemoignages(temoignagesData);
+      }
+        else if (currentView === "candidature") {
+          const candidaturesData = await apiService.getCandidatures();
+          setCandidatures(candidaturesData);
       }
     } catch (err) {
       setError(err.response?.data?.detail || err.message);
@@ -509,6 +514,53 @@ const Dashboard = () => {
       <span className="ml-2 md:text-xl">Chargement...</span>
     </div>
   );
+
+  const renderCandidaturesTable = () => (
+  <div className="bg-white shadow-md rounded-lg p-4 sm:p-6 mb-8 max-w-full mx-2">
+    <div className="flex justify-between items-center mb-4">
+      <h2 className="text-lg sm:text-xl font-bold">Candidatures</h2>
+    </div>
+    {loading && <LoadingSpinner />}
+    {error && <ErrorMessage message={error} />}
+    {!loading && !error && (
+      <table className="w-full text-sm sm:text-base">
+        <thead>
+          <tr className="bg-blue-500 text-gray-200">
+            <th className="p-2 text-left">Utilisateur</th>
+            <th className="p-2 text-left">Type</th>
+            <th className="p-2 text-left">Mois de début</th>
+            <th className="p-2 text-left">Date de création</th>
+            <th className="p-2 text-left">CV</th>
+          </tr>
+        </thead>
+        <tbody>
+          {candidatures.map((cand) => (
+            <tr key={cand.id} className="odd:bg-white even:bg-blue-100 hover:bg-gray-100 transition-colors">
+              <td className="p-2">{cand.user_username}</td>
+              <td className="p-2">{cand.application_type}</td>
+              <td className="p-2">{cand.application_type === 'stage' ? cand.start_month || '-' : '-'}</td>
+              <td className="p-2">{new Date(cand.created_at).toLocaleDateString()}</td>
+              <td className="p-2">
+                {cand.cv ? (
+                  <a
+                    href={cand.cv}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:text-blue-800 flex items-center gap-1"
+                  >
+                    <FaFilePdf /> Voir CV
+                  </a>
+                ) : (
+                  <span className="text-gray-400 text-xs">Aucun CV</span>
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    )}
+  </div>
+);
 
   const renderArticlesTable = () => (
     <div className="bg-white shadow-md rounded-lg p-4 sm:p-6 mb-8 max-w-full mx-2">
@@ -870,11 +922,11 @@ const Dashboard = () => {
             <div className="flex items-center gap-3 p-2">
               <FaFileAlt />
               <select
-                value={["article", "service", "portfolio", "temoignage"].includes(currentView) ? currentView : ""}
+                value={["article", "service", "portfolio", "temoignage", "candidature"].includes(currentView) ? currentView : ""}
                 onChange={(e) => setCurrentView(e.target.value)}
                 className="bg-blue-700 text-white border border-blue-500 rounded p-1 w-full cursor-pointer hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
                 aria-label="Contenus navigation"
-              >
+>
                 <option value="" disabled>
                   Contenus
                 </option>
@@ -882,6 +934,7 @@ const Dashboard = () => {
                 <option value="service">Service</option>
                 <option value="portfolio">Portfolio</option>
                 <option value="temoignage">Témoignage</option>
+                <option value="candidature">Candidature</option>
               </select>
             </div>
           </div>
@@ -910,6 +963,7 @@ const Dashboard = () => {
             {currentView === "service" && "Gestion des Services"}
             {currentView === "portfolio" && "Gestion du Portfolio"}
             {currentView === "temoignage" && "Gestion des Témoignages"}
+            {currentView === "candidature" && "Gestion des Candidatures"}
             {currentView === "users" && "Gestion des Utilisateurs"}
           </h1>
           <div className="w-8 lg:hidden" />
@@ -997,6 +1051,7 @@ const Dashboard = () => {
         {currentView === "service" && renderServicesTable()}
         {currentView === "portfolio" && renderPortfolioTable()}
         {currentView === "temoignage" && renderTemoignagesTable()}
+        {currentView === "candidature" && renderCandidaturesTable()}
         {currentView === "users" && renderUsersTable()}
       </main>
     </div>

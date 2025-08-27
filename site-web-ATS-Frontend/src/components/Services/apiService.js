@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://127.0.0.1:8000/api'; // Adjust to your Django backend URL
+const API_BASE_URL = 'http://127.0.0.1:8000/api'; 
 
 // Add JWT token to all requests if available
 axios.interceptors.request.use((config) => {
@@ -230,6 +230,12 @@ const apiService = {
   } catch (error) {
     throw error.response?.data || { detail: 'Failed to create candidature' };
   }
+},
+getCandidatures: async () => {
+  const response = await axios.get(`${API_BASE_URL}/candidatures/`, {
+    headers: { Authorization: `Bearer ${localStorage.getItem('access_token')}` },
+  });
+  return response.data;
 },
 };
 

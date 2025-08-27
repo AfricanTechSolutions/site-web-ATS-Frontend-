@@ -36,6 +36,7 @@ const ContactForm = () => {
             return;
           }
           axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+         // await axios.get('http://127.0.0.1:8000/api/current-user/');
 
       const response = await fetch('http://127.0.0.1:8000/api/send-email/', {
         method: 'POST',

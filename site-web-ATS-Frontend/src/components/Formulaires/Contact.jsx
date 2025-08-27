@@ -3,6 +3,7 @@ import React from 'react';
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaClock } from 'react-icons/fa';
 import ContactForm from './ContactForm'; // Adjust the import path based on your file structure
 import img1 from '../../assets/image.png';
+import { FaWhatsapp } from 'react-icons/fa';
 
 const Contact = () => {
   const cards = [
@@ -16,7 +17,7 @@ const Contact = () => {
       icon: <FaPhoneAlt />,
       color: 'green',
       title: 'Téléphone',
-      text: '+237 6 XX XX XX XX\n+237 6 XX XX XX XX',
+      text: '+237 675 90 24 76\n+237 690 13 34 46',
     },
     {
       icon: <FaEnvelope />,
@@ -26,7 +27,7 @@ const Contact = () => {
     },
     {
       icon: <FaClock />,
-      color: 'yellow',
+      color: 'orange',
       title: 'Horaires',
       text: 'Lun - Ven: 8h - 18h\nSamedi: 9h - 15h\nDimanche: Fermé',
     },
@@ -35,22 +36,40 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col w-full items-center p-0">
       {/* Banner */}
-      <div className="relative w-full h-96 overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center h-full"
-          style={{
-            backgroundImage: `url(${img1})`,
-            backgroundPosition: 'center',
-            backgroundSize: 'cover',
-          }}
-        >
-          <div className="bg-black w-full h-full opacity-40"></div>
-        </div>
-        <div className="relative z-10 flex flex-col gap-4 items-center justify-center h-full px-6 text-center">
-          <h1 className="text-4xl text-white font-bold drop-shadow-lg">Nous Contacter</h1>
-          <p className="text-xl text-gray-100 max-w-3xl">Nous sommes toujours à votre écoute</p>
-        </div>
-      </div>
+      <div className="relative w-full h-[400px] sm:h-[500px] overflow-hidden">
+  {/* Background image */}
+  <div
+    className="absolute inset-0 bg-cover bg-center"
+    style={{
+      backgroundImage: `url('https://images.unsplash.com/photo-1525182008055-f88b95ff7980?auto=format&fit=crop&w=1600&q=80')`,
+    }}
+  >
+    {/* Gradient overlay */}
+    <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70"></div>
+  </div>
+
+  {/* Content */}
+  <div className="relative z-10 flex flex-col items-center justify-center h-full px-6 text-center">
+    <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-wide drop-shadow-lg animate-fadeInUp">
+      Nous Contacter
+    </h1>
+    <p className="mt-4 text-base sm:text-xl text-gray-200 max-w-2xl animate-fadeInUp delay-200">
+      Nous sommes toujours à votre écoute pour vous accompagner et répondre à vos besoins.
+    </p>
+
+    <a href='Https://wa.me/+237675902476' target='_blank' className="mt-6 px-6 py-3 bg-green-700 hover:bg-green-800 text-white font-semibold rounded-xl shadow-lg transition-transform transform hover:-translate-y-1 animate-fadeInUp delay-300 flex gap-2">
+      Envoyer un message
+      <FaWhatsapp className='text-2xl' />
+    </a>
+  </div>
+</div>
+
+<div className='fixed right-0 bottom-15 mr-2 md:mr-7 border-2 border-b-red-500 border-t-0 border-x-0'>
+<a href='Https://wa.me/+237675902476' target='_blank' className="animate-bounce duration-200 mt-6 px-6 py-3 bg-green-700/80 hover:bg-green-800 text-white font-semibold rounded-xl shadow-lg transition-transform transform hover:-translate-y-1 animate-fadeInUp delay-300 flex gap-2">
+      Whatsapp
+      <FaWhatsapp className='text-2xl' />
+    </a> 
+  </div>
 
       {/* Form + Cards Row (items-stretch to equalize heights) */}
       <div className="flex flex-col lg:flex-row items-stretch gap-8 max-w-full mx-auto p-2 w-full mt-10">

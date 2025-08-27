@@ -12,59 +12,64 @@ const ApplicationForm = () => {
   const [success, setSuccess] = useState(null);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError(null);
-    setSuccess(null);
+  e.preventDefault();
+  setError(null);
+  setSuccess(null);
 
-    // Validate CV
-    if (!cv) {
-      setError('Veuillez téléverser votre CV');
-      return;
-    }
+  // Validate CV
+  if (!cv) {
+    setError('Veuillez téléverser votre CV');
+    return;
+  }
 
-    // Validate start_month for stage
-    if (type === 'stage' && !month) {
-      setError('Veuillez spécifier le mois de début pour le stage');
-      return;
-    }
+  // Validate start_month for stage
+  if (type === 'stage' && !month) {
+    setError('Veuillez spécifier le mois de début pour le stage');
+    return;
+  }
 
-    // Check for token
-    const token = localStorage.getItem('access_token');
-    if (!token) {
-      setError('Vous devez être connecté pour soumettre une candidature');
+  // Check for token
+  const token = localStorage.getItem('access_token');
+  if (!token) {
+    setError('Vous devez être connecté pour soumettre une candidature');
+    setTimeout(() => navigate('/login'), 2000);
+    return;
+  }
+// const user = JSON.parse(localStorage.getItem(user));
+  // Prepare form data
+  const formData = new FormData();
+  formData.append('application_type', type);
+  formData.append('start_month', type === 'stage' ? month : '');
+  // formData.append('cv', cv);
+  
+  // formData.append('user', user.id);
+
+  try {
+    const response = await axios.post('http://127.0.0.1:8000/api/candidatures/', formData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    console.log('Candidature submission response:', response.data); // Debug log
+    setSuccess('Vos informations ont été reçues, nous vous contacterons si votre profil est requis');
+    setType('stage');
+    setMonth('');
+    setCV(null);
+    setTimeout(() => navigate('/user-page'), 4000);
+  } catch (err) {
+    console.error('Error submitting candidature:', err.response?.data || err.message);
+    if (err.response?.status === 403 || err.response?.status === 401) {
+      setError('Session expirée ou non autorisée. Veuillez vous reconnecter.');
+      localStorage.removeItem('access_token');
+      localStorage.removeItem('refresh_token');
       setTimeout(() => navigate('/login'), 2000);
-      return;
+    } else {
+      const errorDetail = err.response?.data?.detail || err.response?.data || 'Échec de la soumission de la candidature';
+      setError(JSON.stringify(errorDetail));
     }
-    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-
-    // Prepare form data
-    const formData = new FormData();
-    formData.append('application_type', type);
-    formData.append('start_month', type === 'stage' ? month : '');
-    formData.append('cv', cv);
-    const user = JSON.parse(localStorage.getItem('user'));
-    let form_month = formData.get("start_month")
-    let form_cv = formData.get("cv")
-    console.log(form_month);
-    
-    try {
-      await axios.post(`http://127.0.0.1:8000/api/candidatures/`, {start_month: form_month, cv: form_cv, user: user.id});
-      setSuccess('Vos informations ont été reçues, nous vous contacterons si votre profil est requis');
-      setType('stage');
-      setMonth('');
-      setCV(null);
-      setTimeout(() => navigate('/user-page'), 4000);
-    } catch (err) {
-      if (err.response?.status === 403 || err.response?.status === 401) {
-        setError('Session expirée ou non autorisée. Veuillez vous reconnecter.');
-        localStorage.removeItem('access_token');
-        localStorage.removeItem('refresh_token');
-        setTimeout(() => navigate('/login'), 2000);
-      } else {
-        setError(err.detail || 'Échec de la soumission de la candidature');
-      }
-    }
-  };
+  }
+};
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center py-10 px-4">

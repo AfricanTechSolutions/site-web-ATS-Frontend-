@@ -116,11 +116,25 @@ const AllServices = () => {
   return (
     <div className="m-0 w-screen relative">
       {/* Banner */}
-      <div className='mt-0 flex backdrop-blur-md flex-col gap-5 justify-center items-center p-10 sm:p-20 md:p-30 bg-gradient-to-br from-blue-700 to-blue-300 mx-0 mb-15 w-screen h-[200px] sm:h-[450px] '>
-        <h1 className=' text-white text-4xl font-bold font-serif'>Tous nos services</h1>
-        <p className='text-gray-50 font-semibold'>
-          Depuis plusieurs annee deja, ATS fourni des produits de qaulite, des logiciels tres perfomants ainsi que des ordinateurs et serveurs ultra-rapide</p>
-      </div>
+     <div className="relative w-full h-[250px] sm:h-[450px] flex items-center justify-center overflow-hidden">
+  {/* Background gradient */}
+  <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-blue-700 to-cyan-400"></div>
+  
+  {/* Overlay for glass effect */}
+  <div className="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
+
+  {/* Content */}
+  <div className="relative z-10 text-center px-6 sm:px-12">
+    <h1 className="text-white text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-wide drop-shadow-lg animate-fadeInUp">
+      Tous nos services
+    </h1>
+    <p className="mt-4 text-gray-100 max-w-2xl mx-auto text-sm sm:text-lg md:text-xl leading-relaxed animate-fadeInUp delay-200">
+      Depuis plusieurs années, <span className="font-semibold text-cyan-200">ATS</span> fournit des produits de qualité,
+      des logiciels performants ainsi que des ordinateurs et serveurs ultra-rapides.
+    </p>
+  </div>
+</div>
+
       <Services />
       <h1 className="text-4xl text-gray-700 text-center mb-8">Tous les Produits et Services</h1>
 

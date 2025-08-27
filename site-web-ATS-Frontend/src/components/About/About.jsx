@@ -1,161 +1,133 @@
 import React from 'react'
-import img1 from '../../assets/IT.png'
 import {
-  IoMdBulb,        // Innovation (light bulb)
-  IoMdThumbsUp,    // Engagement (thumbs-up)
-  IoMdEye,         // Transparence (eye)
-  IoMdRibbon,      // Qualité (ribbon/award)
-  IoMdPeople       // Respect (people)
+  IoMdBulb, IoMdThumbsUp, IoMdEye, IoMdRibbon, IoMdPeople
 } from 'react-icons/io'
-
 
 const About = () => {
   return (
-    <div className='mb-12'>
-      {/* Banner with blurred background */}
-      <div className='relative w-full h-96 overflow-hidden'>
+    <div className="mb-16">
+
+      {/* Hero Banner */}
+      <div className="relative w-full h-[400px] sm:h-[500px] overflow-hidden">
         <div
-          className='absolute inset-0 bg-cover bg-center h-full'
-          style={{ backgroundImage: `url(${img1})`, backgroundPosition: 'center', backgroundSize: 'cover' }}
-        > <div className='bg-black w-full h-full opacity-40 '></div>
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url('https://images.unsplash.com/photo-1531497865144-0464ef8fb9a1?auto=format&fit=crop&w=1600&q=80')`,
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-b from-blue-900/80 via-blue-800/60 to-black/70"></div>
         </div>
-        <div className='relative z-10 flex flex-col gap-4 items-center justify-center h-full px-6 text-center'>
-          <h1 className='text-4xl text-white font-bold drop-shadow-lg'>
-            À propos de African Technologies Solution (ATS)
-          </h1>
-          <p className='text-xl text-gray-100 max-w-3xl'>
-            Une entreprise innovante spécialisée dans la fourniture de solutions numériques pour les PME et les grandes entreprises
-          </p>
+
+        <div className="relative z-10 flex flex-col items-center justify-center h-full px-6 text-center">
+          <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 sm:p-10 shadow-2xl max-w-3xl">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl text-white font-extrabold">
+              À propos de <span className="text-cyan-300">African Technologies Solution (ATS)</span>
+            </h1>
+            <p className="mt-4 text-base sm:text-lg md:text-xl text-gray-200 leading-relaxed">
+              Une entreprise innovante spécialisée dans la fourniture de solutions numériques pour les PME et grandes entreprises.
+            </p>
+          </div>
         </div>
       </div>
 
       {/* Main content */}
-      <div className='flex justify-center mt-10 px-4'>
-        <div className='max-w-5xl space-y-10 text-gray-700'>
-          
+      <div className="flex justify-center mt-16 px-4">
+        <div className="max-w-6xl space-y-20 text-gray-700">
+
           {/* Présentation */}
-          <section>
-            <h2 data-aos="fade-up" data-aos-delay="0" className='text-3xl font-semibold mb-6 text-center '>Présentation de l'entreprise</h2>
-            <p data-aos="fade-up" data-aos-delay="200" className='mb-4 text-lg leading-relaxed'>
-              African Technologies Solutions (ATS) est une entreprise spécialisée dans la fourniture de solutions numériques adaptées aux besoins des PME et des grandes entreprises.
-            </p>
-            <p data-aos="fade-up" data-aos-delay="400" className='mb-4 text-lg leading-relaxed'>
-              Forte d'une expertise en développement d'applications, ATS accompagne ses clients dans la conception, la maintenance et l’optimisation de leurs systèmes informatiques.
-            </p>
-            <p data-aos="fade-up" data-aos-delay="600" className='mb-4 text-lg leading-relaxed'>
-              L'entreprise propose également des services de conseil en technologies innovantes et en cybersécurité afin de garantir la protection et la performance des infrastructures digitales.
-            </p>
-            <p data-aos="fade-up" data-aos-delay="700" className='text-lg leading-relaxed'>
-              Son engagement est d'offrir des solutions sur mesure pour faciliter la transformation digitale et améliorer la compétitivité de ses partenaires.
-            </p>
+          <section className="grid md:grid-cols-2 gap-10 items-center">
+            <div>
+              <h2 className="text-3xl font-semibold mb-6">
+                Présentation de l'entreprise
+                <span className="block w-24 h-1 bg-cyan-500 mt-2 rounded-full"></span>
+              </h2>
+              <p className="text-lg leading-relaxed mb-4">
+                ATS est une entreprise d'ingénierie informatique créée en <b>2015</b> sous l'appellation <b>STC</b>. 
+                Elle est devenue <b>ATS Sarl</b> en <b>2018</b> afin d’étendre ses activités en Afrique centrale.
+              </p>
+              <p className="text-lg leading-relaxed">
+                Aujourd'hui, ATS couvre les besoins en <b>développement applicatif</b>, <b>infrastructures IT</b>, 
+                <b> sécurité informatique</b>, <b>visioconférence</b>, <b>téléphonie IP</b> et plus encore.
+              </p>
+            </div>
+            <img
+              src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80"
+              alt="Équipe ATS en collaboration"
+              className="rounded-2xl shadow-lg"
+            />
           </section>
 
-          {/* Notre Vision */}
-          <section>
-            <h2 data-aos="fade-up" data-aos-delay="800" className='text-2xl font-semibold mb-4'>Notre Vision</h2>
-            <p data-aos="fade-up" data-aos-delay="900" className='text-lg leading-relaxed'>
-              Être un leader reconnu dans le domaine des solutions numériques en Afrique, en accompagnant les entreprises vers une transformation digitale réussie, durable et innovante.
-            </p>
+          {/* Vision */}
+          <section className="grid md:grid-cols-2 gap-10 items-center">
+            <img
+              src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=80"
+              alt="Vision digitale"
+              className="rounded-2xl shadow-lg order-2 md:order-1"
+            />
+            <div className="order-1 md:order-2">
+              <h2 className="text-2xl font-semibold mb-4">Notre Vision</h2>
+              <p className="text-lg leading-relaxed">
+                Être un leader reconnu dans le domaine des solutions numériques en Afrique, 
+                en accompagnant les entreprises vers une transformation digitale réussie, durable et innovante.
+              </p>
+            </div>
           </section>
 
-          {/* Notre Mission */}
-          <section>
-            <h2 data-aos="fade-up" data-aos-delay="1000" className='text-2xl font-semibold mb-4'>Notre Mission</h2>
-            <p data-aos="fade-up" data-aos-delay="1100" className='text-lg leading-relaxed'>
-              Fournir des solutions technologiques personnalisées et performantes, tout en assurant un service client de qualité, pour aider nos partenaires à atteindre leurs objectifs stratégiques.
-            </p>
+          {/* Mission */}
+          <section className="grid md:grid-cols-2 gap-10 items-center">
+            <div>
+              <h2 className="text-2xl font-semibold mb-4">Notre Mission</h2>
+              <p className="text-lg leading-relaxed">
+                Fournir des solutions technologiques personnalisées et performantes, 
+                tout en assurant un service client de qualité, 
+                pour aider nos partenaires à atteindre leurs objectifs stratégiques.
+              </p>
+            </div>
+            <img
+              src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80"
+              alt="Accompagnement client"
+              className="rounded-2xl shadow-lg"
+            />
           </section>
 
-<div
-  className="
-    relative
-    flex
-    flex-col
-    items-center
-    justify-center
-    gap-6
-    px-6
-    py-10
-    bg-gradient-to-br from-blue-700 to-blue-300
-    backdrop-blur-md
-    w-full
-    max-w-5xl
-    mx-auto
-    mt-12
-    mb-12
-    rounded-xl
-  "
->
-  <h2 className="text-2xl font-bold text-white text-center">
-    Vous avez des préoccupations ou souhaitez nous rencontrer ?
-  </h2>
-  <a
-    href="/contact"
-    className="
-      inline-block
-px-4 py-2 bg-white rounded-full text-[1.5rem] text-gray-700 font-semibold hover:bg-blue-500 hover:text-white hover:outline  shadow-md
-      transition
-      duration-200
-    "
-  >
-    Nous contacter
-  </a>
-</div>
+          {/* CTA */}
+          <div className="relative flex flex-col items-center justify-center gap-6 px-6 py-12 bg-gradient-to-r from-cyan-600 to-blue-700 rounded-2xl shadow-xl text-center">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white">
+              Vous avez des préoccupations ou souhaitez nous rencontrer ?
+            </h2>
+            <a
+              href="/contact"
+              className="px-6 py-3 bg-white rounded-full text-lg text-gray-800 font-semibold hover:bg-blue-500 hover:text-white shadow-lg transition-transform transform hover:scale-105"
+            >
+              Nous contacter
+            </a>
+          </div>
 
-          {/* Nos Valeurs */}
-
-<section>
-  <h2 className="text-2xl font-semibold mb-6 text-center">Nos Valeurs</h2>
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-    {/* Innovation */}
-    <div data-aos="fade-up" data-aos-delay="1300" className="bg-white shadow-md rounded-lg p-6 flex flex-col items-center text-center hover:scale-105 duration-200">
-      <IoMdBulb className="text-indigo-600 mb-4" size={48} />
-      <h3 className="text-xl font-semibold mb-2">Innovation</h3>
-      <p className="text-gray-600">
-        Toujours à la pointe des technologies pour proposer des solutions modernes et efficaces.
-      </p>
-    </div>
-
-    {/* Engagement */}
-    <div data-aos="fade-up" data-aos-delay="1400" className="bg-white shadow-md rounded-lg p-6 flex flex-col items-center text-center hover:scale-105 duration-200">
-      <IoMdThumbsUp className="text-green-600 mb-4" size={48} />
-      <h3 className="text-xl font-semibold mb-2">Engagement</h3>
-      <p className="text-gray-600">
-        Une implication totale pour la réussite des projets de nos clients.
-      </p>
-    </div>
-
-    {/* Transparence */}
-    <div data-aos="fade-up" data-aos-delay="1500" className="bg-white shadow-md rounded-lg p-6 flex flex-col items-center text-center hover:scale-105 duration-200">
-      <IoMdEye className="text-yellow-500 mb-4" size={48} />
-      <h3 className="text-xl font-semibold mb-2">Transparence</h3>
-      <p className="text-gray-600">
-        Communication claire et honnête dans toutes nos collaborations.
-      </p>
-    </div>
-
-    {/* Qualité */}
-    <div data-aos="fade-up" data-aos-delay="1600" className="bg-white shadow-md rounded-lg p-6 flex flex-col items-center text-center hover:scale-105 duration-200">
-      <IoMdRibbon className="text-red-600 mb-4" size={48} />
-      <h3 className="text-xl font-semibold mb-2">Qualité</h3>
-      <p className="text-gray-600">
-        Des standards élevés pour garantir des résultats fiables et durables.
-      </p>
-    </div>
-
-    {/* Respect */}
-    <div data-aos="fade-up" data-aos-delay="1700" className="bg-white shadow-md rounded-lg p-6 flex flex-col items-center text-center hover:scale-105 duration-200">
-      <IoMdPeople className="text-purple-600 mb-4" size={48} />
-      <h3 className="text-xl font-semibold mb-2">Respect</h3>
-      <p className="text-gray-600">
-        Valoriser les relations humaines, la diversité et l'éthique professionnelle.
-      </p>
-    </div>
-  </div>
-</section>
-
-
-
+          {/* Valeurs */}
+          <section>
+            <h2 className="text-2xl font-semibold mb-6 text-center">
+              Nos Valeurs
+              <span className="block w-16 h-1 bg-cyan-500 mx-auto mt-2 rounded-full"></span>
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+              {[
+                { icon: IoMdBulb, color: "text-indigo-600", title: "Innovation", text: "Toujours à la pointe des technologies." },
+                { icon: IoMdThumbsUp, color: "text-green-600", title: "Engagement", text: "Une implication totale pour nos clients." },
+                { icon: IoMdEye, color: "text-yellow-500", title: "Transparence", text: "Communication claire et honnête." },
+                { icon: IoMdRibbon, color: "text-red-600", title: "Qualité", text: "Des standards élevés et fiables." },
+                { icon: IoMdPeople, color: "text-purple-600", title: "Respect", text: "Valoriser les relations humaines." },
+              ].map((val, i) => (
+                <div
+                  key={i}
+                  className="bg-white shadow-lg rounded-2xl p-6 flex flex-col items-center text-center hover:-translate-y-2 hover:shadow-2xl transition-all duration-300"
+                >
+                  <val.icon className={`${val.color} mb-4`} size={56} />
+                  <h3 className="text-xl font-semibold mb-2">{val.title}</h3>
+                  <p className="text-gray-600">{val.text}</p>
+                </div>
+              ))}
+            </div>
+          </section>
         </div>
       </div>
     </div>

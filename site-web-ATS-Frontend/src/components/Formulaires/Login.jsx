@@ -135,11 +135,11 @@ const Login = () => {
             </div>
             <div className="flex gap-4 flex-wrap justify-center">
               <button className="bg-blue-600 text-white flex items-center gap-2 px-6 py-2 rounded-md hover:bg-blue-700 transition">
-                <FaGoogle className="text-2xl" />
+                <FaGoogle className="text-2xl text-yellow-300" />
                 <span className="text-sm font-light">Google</span>
               </button>
               <button className="bg-blue-600 text-white flex items-center gap-2 px-6 py-2 rounded-md hover:bg-blue-700 hover:outline">
-                <FaApple className="text-2xl" />
+                <FaApple className="text-2xl text-gray-800" />
                 <span className="text-sm font-light">Apple</span>
               </button>
             </div>

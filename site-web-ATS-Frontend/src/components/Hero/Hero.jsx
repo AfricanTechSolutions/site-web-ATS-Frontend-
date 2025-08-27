@@ -172,6 +172,18 @@ const Hero = () => {
       </div>    
       <Services/>
 
+      <div className="bg-gradient-to-br from-blue-700 to-blue-400 text-white mt-10">
+        <div className="max-w-screen-xl mx-auto p-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-center text-lg font-semibold"></p>
+          <a
+            href="/services"
+            className="bg-white text-blue-600 px-5 py-2 rounded-full font-semibold hover:bg-blue-600 hover:text-white transition duration-200"
+          >
+            Tous les services & produits
+          </a>
+        </div>
+      </div>
+
 <section aria-labelledby="projects-heading" className='mx-2 my-6'>
           <h2 id="projects-heading" className="text-3xl my-3 text-center font-semibold text-gray-800">
             Nos realisations
