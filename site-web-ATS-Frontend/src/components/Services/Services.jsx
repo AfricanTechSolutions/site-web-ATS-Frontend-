@@ -29,7 +29,7 @@ const Services = () => {
     },
     {
       id: 4,
-      titre: "Intelligence Artificielle",
+      titre: "Maintenance",
       description: "Solutions IA personnalisées pour automatiser vos processus métier",
       img: "https://images.unsplash.com/photo-1555255707-c07966088b7b?w=400&h=300&fit=crop"
     },
@@ -96,17 +96,17 @@ const Services = () => {
         <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-indigo-400/20 to-cyan-600/20 rounded-full blur-3xl"></div>
       </div>
       
-      <div className="relative z-10 py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div className="relative z-10 py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         {/* Hero section */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full shadow-lg border border-white/20 mb-6">
             <span className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mr-2 animate-pulse"></span>
             <span className="text-sm font-medium text-slate-600">Découvrez nos services</span>
           </div>
-          <h1 className="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-slate-800 via-blue-800 to-indigo-900 bg-clip-text text-transparent mb-6 leading-tight">
+          <h1 className="text-3xl lg:text-[3rem] font-bold bg-gradient-to-r from-slate-800 via-blue-800 to-indigo-900 bg-clip-text text-transparent mb-6 leading-tight">
             Nos principaux produits
             <br />
-            <span className="text-4xl lg:text-5xl">et services</span>
+            <span className="text-4xl lg:text-[2.5rem">et services</span>
           </h1>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
             Des solutions technologiques innovantes pour propulser votre entreprise vers l'avenir
@@ -118,7 +118,7 @@ const Services = () => {
           {services.map((service, index) => (
             <div
               key={service.id}
-              className="group relative bg-white/70 backdrop-blur-sm rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-white/20 hover:border-white/40"
+              className="group max-h-[370px] lg:max-h-[350px] md:max-w-[350px] relative bg-white/70 backdrop-blur-sm rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-white/20 hover:border-white/40"
               onMouseEnter={() => setHoveredCard(service.id)}
               onMouseLeave={() => setHoveredCard(null)}
               style={{
@@ -129,7 +129,7 @@ const Services = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               
               {/* Image container */}
-              <div className="relative h-64 overflow-hidden">
+              <div className="relative h-3/7 overflow-hidden">
                 <img
                   src={service.img}
                   alt={service.titre}
@@ -145,7 +145,7 @@ const Services = () => {
               </div>
 
               {/* Content */}
-              <div className="relative p-8">
+              <div className="relative p-4 h-4/7">
                 <div className="flex items-start justify-between mb-4">
                   <h3 className="text-2xl font-bold text-slate-800 group-hover:text-blue-800 transition-colors duration-300">
                     {service.titre}
@@ -160,7 +160,7 @@ const Services = () => {
                 </p>
 
                 {/* Action button */}
-                <div className="flex items-center justify-between">
+                <div className="flex items-end justify-between">
                   <div className="flex items-center space-x-2 text-sm text-slate-500">
                     <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
                     <span>Service disponible</span>
