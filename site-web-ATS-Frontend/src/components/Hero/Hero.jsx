@@ -193,7 +193,7 @@ const Hero = () => {
                       <span className="text-sm font-medium text-slate-600">Inspiring • Solutions </span>
                     </div>
 
-                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-slate-800 via-blue-800 to-indigo-900 bg-clip-text text-transparent leading-tight">
+                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-slate-400 via-blue-800 to-cyan-500 bg-clip-text text-transparent leading-tight">
                       {data.title}
                     </h1>
 
@@ -204,7 +204,7 @@ const Hero = () => {
                     <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                       <a href='#'
                         aria-label="En savoir plus"
-                        className="group px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white rounded-2xl font-semibold transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl"
+                        className="group px-8 py-4 bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-cyan-700 text-white rounded-2xl font-semibold transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl"
                       >
                         <span className="flex items-center space-x-2">
                           <span>En savoir plus</span>
@@ -236,7 +236,7 @@ const Hero = () => {
                         {/* <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div> */}
                       </div>
 
-                      <div className="absolute -top-6 -right-6 w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center text-white font-bold shadow-xl opacity-90 group-hover:scale-110 transition-transform duration-300">
+                      <div className="absolute -top-6 -right-6 w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-2xl flex items-center justify-center text-white font-bold shadow-xl opacity-90 group-hover:scale-110 transition-transform duration-300">
                         <BsStars className="text-3xl text-yellow-400"/>
                       </div>
                     </div>
