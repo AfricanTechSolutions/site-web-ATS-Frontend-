@@ -118,67 +118,24 @@ const Services = () => {
           {services.map((service, index) => (
             <div
               key={service.id}
-              className="group max-h-[370px] lg:max-h-[350px] md:max-w-[350px] relative bg-white/70 backdrop-blur-sm rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-white/20 hover:border-white/40"
-              onMouseEnter={() => setHoveredCard(service.id)}
-              onMouseLeave={() => setHoveredCard(null)}
-              style={{
-                animationDelay: `${index * 150}ms`
-              }}
+              className="max-w-[350px] bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-slate-200 mx-auto"
             >
-              {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
-              {/* Image container */}
-              <div className="relative h-3/7 overflow-hidden">
+              <div className="h-48 w-full overflow-hidden">
                 <img
                   src={service.img}
                   alt={service.titre}
-                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
+                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                 />
-                {/* Image overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                
-                {/* Floating badge */}
-                <div className="absolute top-4 right-4 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-2xl flex items-center justify-center shadow-lg transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                  <BsStars className="text-xl text-amber-500"/> 
-                </div>
               </div>
-
-              {/* Content */}
-              <div className="relative p-4 h-4/7">
-                <div className="flex items-start justify-between mb-4">
-                  <h3 className="text-2xl font-bold text-slate-800 group-hover:text-blue-800 transition-colors duration-300">
-                    {service.titre}
-                  </h3>
-                  <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center transform rotate-12 group-hover:rotate-0 transition-transform duration-500">
-                    <span className="text-white text-sm">→</span>
-                  </div>
-                </div>
-                
-                <p className="text-slate-600 leading-relaxed mb-6 group-hover:text-slate-700 transition-colors duration-300">
+              <div className="p-5 flex flex-col justify-between h-48">
+                <h3 className="text-xl font-semibold text-slate-800 mb-2">
+                  {service.titre}
+                </h3>
+                <p className="text-slate-600 text-base mb-4">
                   {service.description}
                 </p>
-
-                {/* Action button */}
-                <div className="flex items-end justify-between">
-                  <div className="flex items-center space-x-2 text-sm text-slate-500">
-                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                    <span>Service disponible</span>
-                  </div>
-                </div>
-
-                {/* Bottom accent line */}
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-purple-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                <div className="text-xs text-green-600 font-medium mt-auto">Service disponible</div>
               </div>
-
-              {/* Hover glow effect */}
-              <div 
-                className={`absolute inset-0 rounded-3xl transition-opacity duration-500 ${
-                  hoveredCard === service.id 
-                    ? 'bg-gradient-to-r from-blue-500/10 via-purple-500/5 to-indigo-500/10 opacity-100' 
-                    : 'opacity-0'
-                }`}
-              ></div>
             </div>
           ))}
         </div>

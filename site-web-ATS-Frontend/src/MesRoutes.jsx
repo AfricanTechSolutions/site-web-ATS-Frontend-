@@ -13,6 +13,7 @@ import ApplicationForm from './components/Dashboards/ApplicationForm';
 import UserPage from './components/Dashboards/UserPage';
 import Dashboard from './components/Dashboards/Dashboard';
 import Realisations from './components/Realisations/Realisations';
+import Blog from './components/blog/blog';
 
 const MesRoutes = () => {
   return (
@@ -21,6 +22,7 @@ const MesRoutes = () => {
       <Navbar/>
     <Routes>
     <Route path='/' element={<Hero />}/>
+    <Route path='/blog' element={<Blog />} />
     <Route path='/*' element={ <h1 className='text-9xl w-full h-full text-center'>Page Not found</h1> }/>
     <Route path='/login' element={<Login />} /> 
     <Route path='/register' element={<Register />} />

@@ -3,13 +3,16 @@ import Slider from 'react-slick';
 import Services from '../Services/Services';
 import Customers from '../../components/Customers/Customers'
 import img1 from'../../assets/experts.jpg'
+import logo33 from '../../assets/partners/logo33.png';
+import logo36 from '../../assets/partners/logo36.png';
+import logo47 from '../../assets/partners/logo47.png';
+import logo28 from '../../assets/partners/logo28.png';
+import logo37 from '../../assets/partners/logo37.png';
+import logo32 from '../../assets/partners/logo32.png';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { BsStars, BsBank } from 'react-icons/bs';
+import {BsStars} from 'react-icons/bs';
 import { IoMdArrowRoundForward, IoIosSchool } from "react-icons/io";
-import { FaComputer, FaMicroscope } from "react-icons/fa6";
-import { TiShoppingCart } from "react-icons/ti";
-import { FaHospitalAlt } from 'react-icons/fa';
 
 // Mock images for demonstration
 const ImageList = [
@@ -96,19 +99,19 @@ const projects = [
 // Modern Customers Component
 const Partenaires = () => {
   const customers = [
-    { id: 1, name: 'TechCorp', logo: <FaComputer /> },
-    { id: 2, name: 'InnovateLab', logo: <FaMicroscope /> },
-    { id: 3, name: 'FutureBank', logo: <BsBank /> },
-    { id: 4, name: 'HealthPlus', logo: <FaHospitalAlt /> },
-    { id: 5, name: 'EduTech', logo: <IoIosSchool /> },
-    { id: 6, name: 'RetailMax', logo: <TiShoppingCart /> },
+    { id: 1, name: 'ASCENCIA', logo: logo33 },
+    { id: 2, name: 'KEYCE', logo: logo36 },
+    { id: 3, name: 'LA SOURCE', logo: logo47 },
+    { id: 4, name: 'ARTHUR', logo: logo28 },
+    { id: 5, name: 'Digital College', logo: logo37 },
+    { id: 6, name: 'Paris Sante', logo: logo32 },
   ];
 
   return (
-    <div className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-white to-gray-50">
+    <div className="py-8 sm:py-16 md:py-15 bg-gradient-to-b from-white to-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8 sm:mb-12">
-          <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-800 mb-3 sm:mb-4">
+          <h3 className="text-2xl sm:text-3xl md:text-2xl font-extrabold text-slate-800 mb-3 sm:mb-4">
             Ils nous font confiance
           </h3>
           <p className="text-base sm:text-lg md:text-xl text-slate-600">
@@ -124,10 +127,10 @@ const Partenaires = () => {
                 className="flex-shrink-0 w-40 sm:w-48 md:w-56 lg:w-64 p-4 sm:p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 hover:scale-105"
               >
                 <div className="flex flex-col items-center">
-                  <div className="text-2xl sm:text-3xl md:text-4xl mb-3 sm:mb-4 text-blue-600 group-hover:scale-110 transition-transform duration-300">
-                    {customer.logo}
+                  <div className="text-2xl sm:text-3xl md:text-2xl mb-3 sm:mb-4 text-blue-600 group-hover:scale-110 transition-transform duration-300">
+                   <img src={customer.logo} alt={customer.name} className="h-12 w-auto object-contain" onError={(e) => { e.currentTarget.src = img1; }} />
                   </div>
-                  <span className="text-sm sm:text-base md:text-lg font-medium text-slate-700 text-center">
+                  <span className="text-sm sm:text-base md:text-sm font-medium text-slate-700 text-center">
                     {customer.name}
                   </span>
                 </div>

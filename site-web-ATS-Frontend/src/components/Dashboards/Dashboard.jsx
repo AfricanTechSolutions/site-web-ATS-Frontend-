@@ -625,16 +625,7 @@ const Dashboard = () => {
     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
       <h2 className="text-2xl font-bold text-gray-900">{title}</h2>
       <div className="flex flex-col sm:flex-row gap-3">
-        <div className="relative">
-          <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-          <input
-            type="text"
-            placeholder={searchPlaceholder}
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-10 pr-4 py-2 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none w-full sm:w-64"
-          />
-        </div>
+
         {onAdd && (
           <button
             onClick={onAdd}
@@ -664,7 +655,7 @@ const Dashboard = () => {
   const renderCandidaturesTable = () => (
     <div className="bg-white/70 backdrop-blur-sm shadow-sm rounded-2xl border border-gray-100 overflow-hidden">
       <div className="p-6">
-        <TableHeader title="Candidatures" searchPlaceholder="Rechercher une candidature..." />
+        <TableHeader title="Candidatures" />
         {loading && <LoadingSpinner />}
         {error && <ErrorMessage message={error} />}
         {!loading && !error && (
@@ -752,7 +743,6 @@ const Dashboard = () => {
           title="Articles"
           onAdd={() => openModal("article")}
           addLabel="Nouvel Article"
-          searchPlaceholder="Rechercher un article..."
         />
         {loading && <LoadingSpinner />}
         {error && <ErrorMessage message={error} />}
@@ -831,8 +821,7 @@ const Dashboard = () => {
         <TableHeader
           title="Services"
           onAdd={() => openModal("service")}
-          addLabel="Nouveau Service"
-          searchPlaceholder="Rechercher un service..."
+          addLabel="Nouvel Service"
         />
         {loading && <LoadingSpinner />}
         {error && <ErrorMessage message={error} />}
@@ -926,7 +915,6 @@ const Dashboard = () => {
           title="Portfolio"
           onAdd={() => openModal("portfolio")}
           addLabel="Nouveau Projet"
-          searchPlaceholder="Rechercher un projet..."
         />
         {loading && <LoadingSpinner />}
         {error && <ErrorMessage message={error} />}
@@ -1028,7 +1016,6 @@ const Dashboard = () => {
           title="Témoignages"
           onAdd={() => openModal("temoignage")}
           addLabel="Nouveau Témoignage"
-          searchPlaceholder="Rechercher un témoignage..."
         />
         {loading && <LoadingSpinner />}
         {error && <ErrorMessage message={error} />}
@@ -1109,7 +1096,6 @@ const Dashboard = () => {
           title="Utilisateurs"
           onAdd={() => openModal("user")}
           addLabel="Nouvel Utilisateur"
-          searchPlaceholder="Rechercher un utilisateur..."
         />
         {loading && <LoadingSpinner />}
         {error && <ErrorMessage message={error} />}
@@ -1253,7 +1239,7 @@ const Dashboard = () => {
         />
         <StatCard
           icon={<FaArchive className="w-6 h-6" />}
-          title="Projets"
+          title="Realisations"
           value={stats.total_realisations}
           color="indigo"
         />

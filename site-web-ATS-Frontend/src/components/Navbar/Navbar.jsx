@@ -10,6 +10,7 @@ const Menu = [
   { id: '3', name: 'Réalisations', link: '/realisations' },
   { id: '4', name: 'À propos', link: '/about-us' },
   { id: '5', name: 'Nous contacter', link: '/contact' },
+  { id: '6', name: 'Blog', link: '/blog' },
 ];
 
 const Navbar = () => {

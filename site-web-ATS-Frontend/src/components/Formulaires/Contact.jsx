@@ -104,7 +104,7 @@ const Contact = () => {
                     </div>
                     
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-bold text-lg text-gray-900 mb-2 group-hover:text-gray-700 transition-colors duration-300">
+                      <h3 className="font-bold text-[1rem] text-gray-900 mb-2 group-hover:text-gray-700 transition-colors duration-300">
                         {card.title}
                       </h3>
                       <p className="text-gray-600 text-sm leading-relaxed break-words">
@@ -123,7 +123,7 @@ const Contact = () => {
               <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-green-500/10 to-blue-500/10 rounded-full blur-2xl"></div>
               
               <div className="relative z-10">
-                <h2 className='text-center text-3xl lg:text-4xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 bg-clip-text text-transparent'>
+                <h2 className='text-center text-3xl lg:text-3xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 bg-clip-text text-transparent'>
                   Bienvenu chez ATS
                 </h2>
                 <p className="text-gray-700 text-center max-w-3xl mx-auto leading-relaxed text-lg">
@@ -145,7 +145,7 @@ const Contact = () => {
         {/* Map Section */}
         <div className='space-y-8 mt-20'>
           <div className="text-center">
-            <h2 className='text-4xl lg:text-5xl font-bold text-gray-900 mb-4'>
+            <h2 className='text-2xl lg:text-3xl font-bold text-gray-900 mb-4'>
               Nous trouver sur{' '}
               <span className="bg-gradient-to-r from-blue-600 via-green-500 to-red-500 bg-clip-text text-transparent font-extrabold">
                 Google
@@ -162,7 +162,7 @@ const Contact = () => {
               <iframe
                 src="https://maps.google.com/maps?q=4.0989136,9.7534779&z=16&output=embed"
                 width="100%"
-                height="450"
+                height="390"
                 title="Notre localisation"
                 allowFullScreen
                 loading="lazy"

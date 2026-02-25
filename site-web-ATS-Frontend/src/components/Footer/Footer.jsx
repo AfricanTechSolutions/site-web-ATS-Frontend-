@@ -98,6 +98,15 @@ const Footer = () => {
             </li>
             <li>
               <a
+                href="/blog"
+                className="text-gray-300 hover:text-white transition-colors duration-300"
+                aria-label="Blog"
+              >
+                Blog
+              </a>
+            </li>
+            <li>
+              <a
                 href="#"
                 className="text-gray-300 hover:text-white transition-colors duration-300"
                 aria-label="Mentions légales"

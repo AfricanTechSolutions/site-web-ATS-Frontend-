@@ -84,33 +84,13 @@ const AllServices = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-white">
       {/* Hero Banner */}
-      <div className="relative w-full h-[300px] sm:h-[500px] flex items-center justify-center overflow-hidden">
-        {/* Animated background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-indigo-800 to-blue-700">
-          <div className="absolute inset-0 opacity-20">
-            <div className="absolute top-0 -left-4 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
-            <div className="absolute top-0 -right-4 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000"></div>
-            <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000"></div>
-          </div>
-        </div>
-        
-        <div className="absolute inset-0 bg-black/10 backdrop-blur-sm"></div>
-
-        <div className="relative z-10 text-center px-6 sm:px-12 max-w-4xl">
-          <div className="inline-flex items-center justify-center w-24 h-24 bg-white/20 backdrop-blur-sm rounded-2xl mb-8 shadow-lg">
-            <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-            </svg>
-          </div>
-          
-          <h1 className="text-white text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-6 drop-shadow-lg">
-            Nos Services
-          </h1>
-          
-          <p className="text-blue-100 text-lg sm:text-xl md:text-2xl leading-relaxed max-w-3xl mx-auto">
-            Depuis plusieurs années, <span className="font-bold text-cyan-300">ATS</span> fournit des solutions innovantes,
+      <div className="relative w-full h-[220px] sm:h-[320px] flex items-center justify-center overflow-hidden bg-gray-100 border-b border-gray-200">
+        <div className="relative z-10 text-center px-6 sm:px-12 max-w-4xl mx-auto">
+          <h1 className="text-3xl sm:text-5xl font-bold text-gray-800 mb-4">Nos Services</h1>
+          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+            Depuis plusieurs années, <span className="font-bold text-gray-800">ATS</span> fournit des solutions innovantes,
             des logiciels performants et des infrastructures de pointe pour accompagner votre réussite.
           </p>
         </div>
@@ -119,40 +99,40 @@ const AllServices = () => {
       <Services />
 
       {/* Services Section */}
-      <div className="py-16 px-4">
+      <div className="py-12 px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent mb-4">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-2">
               Notre Catalogue Complet
             </h2>
-            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+            <p className="text-base text-gray-500 max-w-2xl mx-auto">
               Découvrez nos solutions adaptées à tous vos besoins technologiques
             </p>
           </div>
 
           {/* Services Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4">
             {services.map((service, index) => (
               <div
                 key={service.id}
                 data-aos="fade-up"
                 data-aos-delay={index * 100}
-                className="group bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 cursor-pointer"
+                className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-all duration-200 cursor-pointer max-w-[220px] mx-auto"
                 onMouseEnter={() => setHoveredCardId(service.id)}
                 onMouseLeave={() => setHoveredCardId(null)}
                 onClick={() => handleServiceClick(service)}
               >
                 {/* Service Image */}
-                <div className="relative h-48 bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center overflow-hidden">
+                <div className="relative h-32 bg-gray-100 flex items-center justify-center overflow-hidden">
                   {service.image ? (
                     <img 
                       src={service.image} 
                       alt={service.nom}
-                      className="object-contain max-h-full max-w-full p-4 group-hover:scale-110 transition-transform duration-500"
+                      className="object-contain max-h-full max-w-full p-2 hover:scale-105 transition-transform duration-200"
                     />
                   ) : (
-                    <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center">
-                      <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-16 h-16 bg-gray-300 rounded-xl flex items-center justify-center">
+                      <svg className="w-8 h-8 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                       </svg>
                     </div>
@@ -165,31 +145,17 @@ const AllServices = () => {
                 </div>
 
                 {/* Service Content */}
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-3">
-                    <h3 className="text-xl font-bold text-slate-800 group-hover:text-blue-600 transition-colors">
-                      {service.nom}
-                    </h3>
-                    <svg 
-                      className={`w-6 h-6 text-blue-500 transition-transform duration-300 ${
-                        hoveredCardId === service.id ? 'rotate-45 scale-110' : ''
-                      }`} 
-                      fill="none" 
-                      stroke="currentColor" 
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                    </svg>
-                  </div>
-                  
-                  <p className="text-slate-600 line-clamp-3 leading-relaxed mb-4">
+                <div className="p-3">
+                  <h3 className="text-[1rem] font-semibold text-gray-800 mb-1">
+                    {service.nom}
+                  </h3>
+                  <p className="text-gray-600 text-xs mb-2">
                     {service.description}
                   </p>
-
                   {service.prix && (
                     <div className="flex items-center justify-between">
-                      <span className="text-sm font-medium text-slate-500">À partir de</span>
-                      <span className="text-lg font-bold text-blue-600">
+                      <span className="text-[0.75rem] font-medium text-gray-500">À partir de</span>
+                      <span className="text-[0.95rem] font-bold text-gray-800">
                         {service.prix} FCFA
                       </span>
                     </div>
@@ -202,33 +168,19 @@ const AllServices = () => {
       </div>
 
       {/* Contact Section */}
-      <div className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700"></div>
-        <div className="absolute inset-0 bg-black/20 backdrop-blur-sm"></div>
-        
-        <div className="relative z-10 max-w-4xl mx-auto text-center px-6">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl mb-8">
-            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-            </svg>
-          </div>
-          
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+      <div className="relative py-16 bg-gray-100 border-t border-gray-200">
+        <div className="max-w-4xl mx-auto text-center px-6">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
             Une Question ? Un Projet ?
           </h2>
-          
-          <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
+          <p className="text-base text-gray-600 mb-8 max-w-2xl mx-auto">
             Notre équipe d'experts est là pour vous accompagner dans tous vos projets technologiques.
           </p>
-          
           <a
             href="/contact"
-            className="inline-flex items-center gap-3 bg-white text-slate-800 px-8 py-4 rounded-2xl font-bold text-lg hover:bg-blue-50 transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
+            className="inline-flex items-center gap-2 bg-gray-800 text-white px-6 py-3 rounded-lg font-semibold text-base hover:bg-gray-700 transition-all duration-200"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
-            Nous Contacter
+            Contactez-nous
           </a>
         </div>
       </div>
